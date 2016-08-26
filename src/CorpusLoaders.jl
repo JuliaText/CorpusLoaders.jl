@@ -1,5 +1,5 @@
 module CorpusLoaders
 
-# package code goes here
+include("semcor.jl")
 
 end # module
