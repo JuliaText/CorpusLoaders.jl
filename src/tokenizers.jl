@@ -16,3 +16,6 @@ function punctuation_space_tokenize(source::AbstractString)
 end
 
 
+#TODO: Consider Implementing Robert MacIntyre's Penn Treebanks Tokenizer
+#TODO: ^ http://www.cis.upenn.edu/~treebank/tokenizer.sed
+#TODO: ^ However it requires sentence tokenizing to be done first

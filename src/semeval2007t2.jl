@@ -1,8 +1,8 @@
-module Semeval200t7
+module Semeval2007t7
 using LightXML
+using CorpusLoaders #for tokenizers
 
-export load_challenges_semeval2007t7,lazyload_challenges_semeval2007t7,
-    load_solutions_semeval2007t7, lazyload_solutions_semeval2007t7
+export load_challenges_semeval2007t7, lazyload_challenges_semeval2007t7, load_solutions_semeval2007t7, lazyload_solutions_semeval2007t7
 
 immutable WsdChallenge
     id::String
@@ -44,8 +44,9 @@ end
 Load seneval 2007 Task 7 corpus of challenges
 Eg lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")
 """
-load_challenges_semeval2007t7(xml_file::AbstractString) = load_challenges_semeval2007t7(xml_file) |> collect
-
+function load_challenges_semeval2007t7(xml_file::AbstractString)
+	collect(lazyload_challenges_semeval2007t7(xml_file))
+end
 
 immutable WsdSolution
     id
@@ -77,7 +78,9 @@ end
 Load seneval 2007 Task 7 corpus of solutions
 Eg load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")
 """
-load_solutions_semeval2007t7(keyfile::AbstractString) = collect(lazyload_solutions_semeval2007t7(keyfile))
+function load_solutions_semeval2007t7(keyfile::AbstractString)
+	collect(lazyload_solutions_semeval2007t7(keyfile))
+end
 
 
 end #module

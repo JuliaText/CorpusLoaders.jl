@@ -1,4 +1,4 @@
-using CorpusLoaders
+using CorpusLoaders.Semcor
 using Base.Test
 
 @testset "Sense Annoations" begin
@@ -18,7 +18,7 @@ using Base.Test
     
     
     eg = """<wf cmd=done pos=NN lemma=report wnsn=20 lexsn=1:10:00::>reports</wf>"""
-    display(parse_sense_annotated_word(eg))
+#    display(parse_sense_annotated_word(eg))
     @test parse_sense_annotated_word(eg).pos == "NN"
     @test parse_sense_annotated_word(eg).lemma == "report"
     @test parse_sense_annotated_word(eg).wnsn == "20"

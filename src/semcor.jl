@@ -1,4 +1,6 @@
 # Note: SemCore is *not* XML.
+module Semcor
+
 export TaggedWord, SenseAnnotatedWord, PosTaggedWord,
 		parse_sense_annotated_word, parse_tagged_word,
 		lazyload_semcor, load_semcor
@@ -84,3 +86,6 @@ end
 
 """Load up a semcor corpus. Eg `load_semcor("corpora/semcor2.1/brown1/tagfiles/")`"""
 load_semcor(tagdir_path::AbstractString) = collect(lazyload_semcor(tagdir_path))
+
+
+end #module
