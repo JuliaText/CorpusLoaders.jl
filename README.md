@@ -12,5 +12,9 @@ A collection of various means for loading various different corpora used in NLP.
 Currently supporting:
 
  - [SemCor](http://web.eecs.umich.edu/~mihalcea/downloads.html#semcor)
+ - [SemEval 2007 Task 7](http://nlp.cs.swarthmore.edu/semeval/tasks/task07/data.shtml)
 
+
+
+Also supporting several Misc Tokenizers, for plain text corpora.
 
