@@ -1,9 +1,9 @@
-# Note: SemCore is *not* XML.
+# Note: SemCor is *not* XML.
 module Semcor
 
 export TaggedWord, SenseAnnotatedWord, PosTaggedWord,
 		parse_sense_annotated_word, parse_tagged_word,
-		lazyload_semcor, load_semcor
+		lazyload_semcor, load_semcor, index_semcor
 		
 abstract TaggedWord
 immutable SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
@@ -20,6 +20,7 @@ immutable PosTaggedWord{S<:AbstractString} <: TaggedWord
     word::S
 end
 
+typealias TaggedSentence Vector{Semcor.TaggedWord}
 
 function parse_sense_annotated_word(line::AbstractString)
     captures = match(r"<wf cmd=done.* pos=(.*) lemma=(.*) wnsn=(.*) lexsn=(\d.*:\d*).*>(.*).*</wf>", line).captures
@@ -32,7 +33,7 @@ function parse_tagged_word(line::AbstractString)
 end
 
 
-function parse_semcorefile(lines)
+function parse_semcorfile(lines)
     #GOLDPLATE: There is a nicer way to do this, lazily, with coroutines.
     sents = Vector{TaggedWord}[]
 
@@ -78,7 +79,7 @@ end
 function lazyload_semcor(tagdir_path::AbstractString)
     Task() do
         for filename in [joinpath(tagdir_path, d) for d in readdir(tagdir_path)]
-            produce.(parse_semcorefile(eachline(filename)))
+            produce.(parse_semcorfile(eachline(filename)))
         end
     end
 end
@@ -87,5 +88,29 @@ end
 """Load up a semcor corpus. Eg `load_semcor("corpora/semcor2.1/brown1/tagfiles/")`"""
 load_semcor(tagdir_path::AbstractString) = collect(lazyload_semcor(tagdir_path))
 
+
+"""
+Index a semcor stream, by word (sense-key),
+so that examples of sentenced where that word was used can found.
+
+```
+iter = lazyload_indexed_semcor("corpora/semcor2.1/brown1/tagfiles/")
+uses = index_semcor(iter)
+uses["produce%2:39:01::"]
+```
+"""
+function index_semcor(tagged_sentence_stream)
+    uses = Dict{String, Vector{TaggedSentence}}()
+    for sent::TaggedSentence in tagged_sentence_stream
+        for word in sent
+            if typeof(word)<:SenseAnnotatedWord
+                key = word.lemma*"%"*word.lexsn
+                uses_of_word = get!(Vector{TaggedSentence}, uses, key)
+                push!(uses_of_word, sent)
+            end
+        end
+    end
+    uses
+end
 
 end #module
