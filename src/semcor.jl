@@ -1,9 +1,10 @@
 # Note: SemCor is *not* XML.
 module Semcor
 
-export TaggedWord, SenseAnnotatedWord, PosTaggedWord,
+export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence
 		parse_sense_annotated_word, parse_tagged_word,
-		lazyload_semcor, load_semcor, index_semcor
+		lazyload_semcor, load_semcor, index_semcor,
+		strip_tags
 		
 abstract TaggedWord
 immutable SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
@@ -112,5 +113,8 @@ function index_semcor(tagged_sentence_stream)
     end
     uses
 end
+
+"""Remove all the tagging information, returning just tokenized words"""
+strip_tags(sent::TaggedSentence) = [w.word for w in sent]
 
 end #module
