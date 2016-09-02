@@ -9,5 +9,5 @@ makedocs(modules=[CorpusLoaders,
 
 deploydocs(deps   = Deps.pip("mkdocs", "python-markdown-math"),
 			repo = "github.com/oxinabox/CorpusLoaders.jl.git",
-			julia  = "0.5",
+#			julia  = "0.5",
 			osname = "linux")
