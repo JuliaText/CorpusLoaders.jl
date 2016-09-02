@@ -1,7 +1,11 @@
 
 export poormans_tokenize, punctuation_space_tokenize
 
-"""Tokenizes by removing punctuation and splitting on spaces"""
+"""
+`poormans_tokenize`
+
+Tokenizes by removing punctuation and splitting on spaces
+"""
 function poormans_tokenize(source::AbstractString)
     cleaned = filter(s->!ispunct(s), lowercase(source))
     split(cleaned)
