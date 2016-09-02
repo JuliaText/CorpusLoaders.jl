@@ -13,8 +13,8 @@ immutable WsdChallenge
 end
 
 """
-Lazily load seneval 2007 Task 7 corpus of challenges
-Eg lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")
+Lazily load semeval 2007 Task 7 corpus of challenges
+Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")`
 """
 function lazyload_challenges_semeval2007t7(xml_file::AbstractString)
     xdoc = parse_file(xml_file)
@@ -41,8 +41,8 @@ function lazyload_challenges_semeval2007t7(xml_file::AbstractString)
 end
 
 """
-Load seneval 2007 Task 7 corpus of challenges
-Eg lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")
+Load SemEval 2007 Task 7 corpus of challenges
+Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")`
 """
 function load_challenges_semeval2007t7(xml_file::AbstractString)
 	collect(lazyload_challenges_semeval2007t7(xml_file))
@@ -56,8 +56,8 @@ immutable WsdSolution
 end
 
 """
-Lazy Load seneval 2007 Task 7 corpus of solutions
-Eg lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")
+Lazy Load SemEval 2007 Task 7 corpus of solutions
+Eg `lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")`
 """
 function lazyload_solutions_semeval2007t7(key_file="data/corpora/wsd/semeval2007_t7/key/dataset21.test.key")
     Task() do
@@ -75,8 +75,8 @@ function lazyload_solutions_semeval2007t7(key_file="data/corpora/wsd/semeval2007
 end
 
 """
-Load seneval 2007 Task 7 corpus of solutions
-Eg load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")
+Load SemEval 2007 Task 7 corpus of solutions
+Eg `load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")`
 """
 function load_solutions_semeval2007t7(keyfile::AbstractString)
 	collect(lazyload_solutions_semeval2007t7(keyfile))
