@@ -108,11 +108,11 @@
 <strong><code>CorpusLoaders.poormans_tokenize</code></strong> &mdash; <em>Method</em>.</p>
 <p><code>poormans_tokenize</code></p>
 <p>Tokenizes by removing punctuation and splitting on spaces</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/tokenizers.jl#L4-L8' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/tokenizers.jl#L4-L8' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}' href='#CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.punctuation_space_tokenize</code></strong> &mdash; <em>Method</em>.</p>
 <p>Tokenizes by removing punctuation, unless it occurs inside of a word</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/tokenizers.jl#L14' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/tokenizers.jl#L14' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semcor.index_semcor-Tuple{Any}' href='#CorpusLoaders.Semcor.index_semcor-Tuple{Any}'>#</a>
 <strong><code>CorpusLoaders.Semcor.index_semcor</code></strong> &mdash; <em>Method</em>.</p>
 <p>Index a semcor stream, by word (sense-key), so that examples of sentenced where that word was used can found.</p>
@@ -121,35 +121,35 @@ uses = index_semcor(iter)
 uses[&quot;produce%2:39:01::&quot;]</code></pre>
 
 
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semcor.jl#L91-L100' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semcor.jl#L91-L100' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semcor.lazyload_semcor-Tuple{AbstractString}' href='#CorpusLoaders.Semcor.lazyload_semcor-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.Semcor.lazyload_semcor</code></strong> &mdash; <em>Method</em>.</p>
 <p>Load up a semcor corpus, lazily – one file at a time. Eg <code>lazyload_semcor("corpora/semcor2.1/brown1/tagfiles/")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semcor.jl#L77' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semcor.jl#L77' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semcor.load_semcor-Tuple{AbstractString}' href='#CorpusLoaders.Semcor.load_semcor-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.Semcor.load_semcor</code></strong> &mdash; <em>Method</em>.</p>
 <p>Load up a semcor corpus. Eg <code>load_semcor("corpora/semcor2.1/brown1/tagfiles/")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semcor.jl#L87' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semcor.jl#L87' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semcor.strip_tags-Tuple{Array{CorpusLoaders.Semcor.TaggedWord,1}}' href='#CorpusLoaders.Semcor.strip_tags-Tuple{Array{CorpusLoaders.Semcor.TaggedWord,1}}'>#</a>
 <strong><code>CorpusLoaders.Semcor.strip_tags</code></strong> &mdash; <em>Method</em>.</p>
 <p>Remove all the tagging information, returning just tokenized words</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semcor.jl#L115' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semcor.jl#L115' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
-<p>Lazily load seneval 2007 Task 7 corpus of challenges Eg lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semeval2007t2.jl#L15-L18' class='documenter-source'>source</a><br></p>
+<p>Lazily load semeval 2007 Task 7 corpus of challenges Eg <code>lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semeval2007t2.jl#L15-L18' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7' href='#CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7'>#</a>
 <strong><code>CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7</code></strong> &mdash; <em>Function</em>.</p>
-<p>Lazy Load seneval 2007 Task 7 corpus of solutions Eg lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semeval2007t2.jl#L58-L61' class='documenter-source'>source</a><br></p>
+<p>Lazy Load SemEval 2007 Task 7 corpus of solutions Eg <code>lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semeval2007t2.jl#L58-L61' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
-<p>Load seneval 2007 Task 7 corpus of challenges Eg lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semeval2007t2.jl#L43-L46' class='documenter-source'>source</a><br></p>
+<p>Load SemEval 2007 Task 7 corpus of challenges Eg <code>lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semeval2007t2.jl#L43-L46' class='documenter-source'>source</a><br></p>
 <p><a id='CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7-Tuple{AbstractString}'>#</a>
 <strong><code>CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
-<p>Load seneval 2007 Task 7 corpus of solutions Eg load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/39edfd1b35fa9ee9b22681ea7576fa859d743cbe/src/semeval2007t2.jl#L77-L80' class='documenter-source'>source</a><br></p>
+<p>Load SemEval 2007 Task 7 corpus of solutions Eg <code>load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/68efe575746e7d4928cacee0cd225b4e30c9f76b/src/semeval2007t2.jl#L77-L80' class='documenter-source'>source</a><br></p>
               
             </div>
           </div>
@@ -188,5 +188,5 @@ uses[&quot;produce%2:39:01::&quot;]</code></pre>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-09-02 11:23:35.052825
+Build Date UTC : 2016-09-02 11:33:58.062573
 -->
