@@ -3,11 +3,11 @@ using CorpusLoaders
 
 makedocs(modules=[CorpusLoaders,
 				  CorpusLoaders.Semcor,
-				  CorpusLoaders.Semeval2007t7
+				  CorpusLoaders.Semeval2007t7,
+				  CorpusLoaders.Similarity
 				  ])
 
 
 deploydocs(deps   = Deps.pip("mkdocs", "python-markdown-math"),
 			repo = "github.com/oxinabox/CorpusLoaders.jl.git",
-#			julia  = "0.5",
 			osname = "linux")

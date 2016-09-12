@@ -1,4 +1,5 @@
 # CorpusLoaders
+[![Docs Latest](https://img.shields.io/badge/docs-latest-blue.svg)](http://white.ucc.asn.au/CorpusLoaders.jl/latest/)
 
 [![Build Status](https://travis-ci.org/oxinabox/CorpusLoaders.jl.svg?branch=master)](https://travis-ci.org/oxinabox/CorpusLoaders.jl)
 
