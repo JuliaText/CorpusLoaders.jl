@@ -1,7 +1,8 @@
 # CorpusLoaders
 [![Docs Latest](https://img.shields.io/badge/docs-latest-blue.svg)](http://white.ucc.asn.au/CorpusLoaders.jl/latest/)
 
-[![Build Status](https://travis-ci.org/oxinabox/CorpusLoaders.jl.svg?branch=master)](https://travis-ci.org/oxinabox/CorpusLoaders.jl)
+[![Travis Status](https://travis-ci.org/oxinabox/CorpusLoaders.jl.svg?branch=master)](https://travis-ci.org/oxinabox/CorpusLoaders.jl)
+[!AppVeyor Status](https://ci.appveyor.com/api/projects/status/bio46qj8ol65bs3e?svg=true)](https://ci.appveyor.com/project/oxinabox/corpusloaders-jl)
 
 [![Coverage Status](https://coveralls.io/repos/oxinabox/CorpusLoaders.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/oxinabox/CorpusLoaders.jl?branch=master)
 
