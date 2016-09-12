@@ -9,3 +9,5 @@ end
 @testset "Tokenizers" begin
 	include("./tokenizers.jl")
 end
+
+include("./similarity.jl")
