@@ -13,7 +13,9 @@ Currently supporting:
 
  - [SemCor](http://web.eecs.umich.edu/~mihalcea/downloads.html#semcor)
  - [SemEval 2007 Task 7](http://nlp.cs.swarthmore.edu/semeval/tasks/task07/data.shtml)
-
+ - Similarity Corpora
+	 - [Stanford's Contextual Word Similarities (SCWC)](http://www.socher.org/index.php/Main/ImprovingWordRepresentationsViaGlobalContextAndMultipleWordPrototypes)
+	 - [WordSim353](http://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/)
 
 
 Also supporting several Misc Tokenizers, for plain text corpora.
