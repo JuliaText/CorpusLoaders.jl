@@ -1,7 +1,7 @@
 # Note: SemCor is *not* XML.
 module Semcor
 
-export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence
+export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence,
 		parse_sense_annotated_word, parse_tagged_word,
 		lazyload_semcor, load_semcor, index_semcor,
 		strip_tags
