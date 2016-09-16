@@ -5,7 +5,9 @@ export load_wordsim353, load_scws
 macro declare_loaders(funcname, filename)
     fnamestr = string(funcname)
     quote
-        "Load from file. E.g. $($fnamestr)($($filename))"
+        """
+		Load from file. E.g. $($fnamestr)($($filename))
+		"""
         $funcname(filename) = open($funcname, filename,"r")
     end|>esc
 end
@@ -28,15 +30,17 @@ end
 
 
 
-@declare_loaders load_scws "data/corpora/SCWS/ratings.txt"
+@declare_loaders load_scws "SCWS/ratings.txt"
 
 """
 Load the Stanford's Contextual Word Similarities (SCWS) dataset.
 [Download](http://www-nlp.stanford.edu/~ehhuang/SCWS.zip)
 Returns a 4-tuple.
- - wordpairs: a \(n\times2\) matrix of words (strings)
+ - wordpairs: a \(n\times 2\) matrix of the target words (strings)
  - groundsim: a \(n\) vector of floats, between 0 and 10.0. This is the average human rating on similarity of the words. 10.0 means identical.
  This loading method does not make the per rater similarity ratings available. It could reasonabled by extended to do so.
+ - contexts: a \(n\times 2\) maxtrix of vectors of words (strings). With target word removed from each.
+ - indexes: a \(n\times 2\) matrix of integers, which have the index from which the target word was removed.
 """
 function load_scws(io::IO)
     function get_context_and_index(fulltext)
