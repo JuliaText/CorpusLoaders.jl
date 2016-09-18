@@ -11,3 +11,8 @@ end
 end
 
 include("./similarity.jl")
+
+
+@testset "tag conversion" begin
+	include("tags.jl")
+end
