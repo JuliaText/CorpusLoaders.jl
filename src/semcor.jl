@@ -15,8 +15,6 @@ immutable SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
     lexsn::S
     word::S
 end
-function SenseAnnotatedWord{S}(pos::S, lemma::S, wnsn::S, lexsn::S, word::S)
-end
 
 
 immutable PosTaggedWord{S<:AbstractString} <: TaggedWord
