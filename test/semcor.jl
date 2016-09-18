@@ -8,7 +8,7 @@ using Base.Test
     eg = """<wf cmd=done rdf=group pos=NNP lemma=group wnsn=1 lexsn=1:03:00:: pn=group>Fulton_County_Grand_Jury</wf>"""
     @test parse_sense_annotated_word(eg).pos == "NNP"
     @test parse_sense_annotated_word(eg).lemma == "group"
-    @test parse_sense_annotated_word(eg).wnsn == "1"
+    @test parse_sense_annotated_word(eg).wnsn == 1
     @test parse_sense_annotated_word(eg).lexsn == "1:03:00::"
     @test parse_sense_annotated_word(eg).word == "Fulton_County_Grand_Jury"
 
@@ -22,7 +22,7 @@ using Base.Test
 #    display(parse_sense_annotated_word(eg))
     @test parse_sense_annotated_word(eg).pos == "NN"
     @test parse_sense_annotated_word(eg).lemma == "report"
-    @test parse_sense_annotated_word(eg).wnsn == "20"
+    @test parse_sense_annotated_word(eg).wnsn == 20
     @test parse_sense_annotated_word(eg).lexsn == "1:10:00::"
     @test parse_sense_annotated_word(eg).word == "reports"
 
