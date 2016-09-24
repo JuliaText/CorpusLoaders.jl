@@ -1,6 +1,4 @@
-module Semeval2007t7
 using LightXML
-using CorpusLoaders #for tokenizers
 
 export load_challenges_semeval2007t7, lazyload_challenges_semeval2007t7, load_solutions_semeval2007t7, lazyload_solutions_semeval2007t7
 
@@ -83,4 +81,3 @@ function load_solutions_semeval2007t7(keyfile::AbstractString)
 end
 
 
-end #module

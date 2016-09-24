@@ -1,5 +1,4 @@
-using CorpusLoaders.Semcor
-using CorpusLoaders.Semcor: parse_sense_annotated_word, parse_tagged_word
+using CorpusLoaders: parse_sense_annotated_word, parse_tagged_word
 using Base.Test
 
 @testset "Sense Annoations" begin

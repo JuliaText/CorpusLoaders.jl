@@ -1,6 +1,4 @@
 # Note: SemCor is *not* XML.
-module Semcor
-
 export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence,
 		parse_sense_annotated_word, parse_tagged_word,
 		lazyload_semcor, load_semcor, index_semcor,
@@ -22,13 +20,14 @@ immutable PosTaggedWord{S<:AbstractString} <: TaggedWord
     word::S
 end
 
-typealias TaggedSentence Vector{Semcor.TaggedWord}
+typealias TaggedSentence Vector{TaggedWord}
+
+
 
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
 
 function parse_sense_annotated_word(line::AbstractString)
     captures = match(r"<wf cmd=done.* pos=(.*) lemma=(.*) wnsn=(.*) lexsn=(\d.*:\d*).*>(.*).*</wf>", line).captures
-    SenseAnnotatedWord(captures...)
 	pos, lemma, wnsn, lexsn, word = captures
 	if ';' in wnsn
 		# Discard Extra Senses
@@ -109,7 +108,7 @@ end
 """Load up a semcor corpus. Eg `load_semcor("corpora/semcor2.1/brown1/tagfiles/")`"""
 load_semcor(tagdir_path::AbstractString) = collect(lazyload_semcor(tagdir_path))
 
-typealias SemcorIndex Dict{String, Vector{Tuple{Semcor.TaggedSentence, Int}}}
+typealias SemcorIndex Dict{String, Vector{Tuple{TaggedSentence, Int}}}
 
 """
 Index a semcor stream, by word (sense-key),
@@ -149,4 +148,3 @@ end
 """Remove all the tagging information, returning just tokenized words"""
 strip_tags(sent::TaggedSentence) = [w.word for w in sent]
 
-end #module

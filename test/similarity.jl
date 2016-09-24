@@ -1,4 +1,3 @@
-using CorpusLoaders.Similarity
 
 @testset "wordsim353" begin
 	egs = """Word 1,Word 2,Human (mean)

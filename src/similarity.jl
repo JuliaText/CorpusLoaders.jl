@@ -1,4 +1,3 @@
-module Similarity
 export load_wordsim353, load_scws
 
 
@@ -68,8 +67,3 @@ function load_scws(io::IO)
 
     (wordpairs, groundsim, contexts, indexes)
 end
-
-
-
-
-end #module
