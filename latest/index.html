@@ -107,22 +107,9 @@
                 <p><a id='CorpusLoaders.brownPOStoWordNetPOS' href='#CorpusLoaders.brownPOStoWordNetPOS'>#</a>
 <strong><code>CorpusLoaders.brownPOStoWordNetPOS</code></strong> &mdash; <em>Function</em>.</p>
 <p>Converts a Brown part of speech tag to a wordnet one. Coincientally identical to the conventing a Penn Treebank tag to wordnet.</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/tags.jl#L19-L22' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.pennPOStoWordNetPOS-Tuple{AbstractString}' href='#CorpusLoaders.pennPOStoWordNetPOS-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.pennPOStoWordNetPOS</code></strong> &mdash; <em>Method</em>.</p>
-<p>Convert a Penn Treebank part of speech tag to a </p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/tags.jl#L5-L7' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.poormans_tokenize-Tuple{AbstractString}' href='#CorpusLoaders.poormans_tokenize-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.poormans_tokenize</code></strong> &mdash; <em>Method</em>.</p>
-<p><code>poormans_tokenize</code></p>
-<p>Tokenizes by removing punctuation and splitting on spaces</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/tokenizers.jl#L4-L8' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}' href='#CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.punctuation_space_tokenize</code></strong> &mdash; <em>Method</em>.</p>
-<p>Tokenizes by removing punctuation, unless it occurs inside of a word</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/tokenizers.jl#L14' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semcor.index_semcor-Tuple{Any}' href='#CorpusLoaders.Semcor.index_semcor-Tuple{Any}'>#</a>
-<strong><code>CorpusLoaders.Semcor.index_semcor</code></strong> &mdash; <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/tags.jl#L19-L22' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.index_semcor-Tuple{Any}' href='#CorpusLoaders.index_semcor-Tuple{Any}'>#</a>
+<strong><code>CorpusLoaders.index_semcor</code></strong> &mdash; <em>Method</em>.</p>
 <p>Index a semcor stream, by word (sense-key), so that examples of sentenced where that word was used can found. Each value of the dictionary is a vector of (sentence, position), where </p>
 <pre class="codehilite"><code>iter = lazyload_indexed_semcor(&quot;corpora/semcor2.1/brown1/tagfiles/&quot;)
 uses = index_semcor(iter)
@@ -138,36 +125,71 @@ for (sent, position) in  uses[&quot;produce%2:39:01::&quot;]
 end</code></pre>
 
 
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semcor.jl#L116-L136' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semcor.lazyload_semcor-Tuple{AbstractString}' href='#CorpusLoaders.Semcor.lazyload_semcor-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.Semcor.lazyload_semcor</code></strong> &mdash; <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semcor.jl#L113-L133' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.lazyload_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.lazyload_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.lazyload_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
+<p>Lazily load semeval 2007 Task 7 corpus of challenges Eg <code>lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semeval2007t2.jl#L13-L16' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.lazyload_semcor-Tuple{AbstractString}' href='#CorpusLoaders.lazyload_semcor-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.lazyload_semcor</code></strong> &mdash; <em>Method</em>.</p>
 <p>Load up a semcor corpus, lazily – one file at a time. For word with multiple senses defined, (~187 in Semcore 2.1), the first is kept and all others discarded.</p>
 <p>Eg <code>`lazyload_semcor("semcor2.1/brown1/tagfiles/")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semcor.jl#L92-L101' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semcor.load_semcor-Tuple{AbstractString}' href='#CorpusLoaders.Semcor.load_semcor-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.Semcor.load_semcor</code></strong> &mdash; <em>Method</em>.</p>
-<p>Load up a semcor corpus. Eg <code>load_semcor("corpora/semcor2.1/brown1/tagfiles/")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semcor.jl#L111' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semcor.strip_tags-Tuple{Array{CorpusLoaders.Semcor.TaggedWord,1}}' href='#CorpusLoaders.Semcor.strip_tags-Tuple{Array{CorpusLoaders.Semcor.TaggedWord,1}}'>#</a>
-<strong><code>CorpusLoaders.Semcor.strip_tags</code></strong> &mdash; <em>Method</em>.</p>
-<p>Remove all the tagging information, returning just tokenized words</p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semcor.jl#L151' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.Semeval2007t7.lazyload_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
-<p>Lazily load semeval 2007 Task 7 corpus of challenges Eg <code>lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semeval2007t2.jl#L15-L18' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7' href='#CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7'>#</a>
-<strong><code>CorpusLoaders.Semeval2007t7.lazyload_solutions_semeval2007t7</code></strong> &mdash; <em>Function</em>.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semcor.jl#L89-L98' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.lazyload_solutions_semeval2007t7' href='#CorpusLoaders.lazyload_solutions_semeval2007t7'>#</a>
+<strong><code>CorpusLoaders.lazyload_solutions_semeval2007t7</code></strong> &mdash; <em>Function</em>.</p>
 <p>Lazy Load SemEval 2007 Task 7 corpus of solutions Eg <code>lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semeval2007t2.jl#L58-L61' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.Semeval2007t7.load_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semeval2007t2.jl#L56-L59' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.load_challenges_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.load_challenges_semeval2007t7-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.load_challenges_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
 <p>Load SemEval 2007 Task 7 corpus of challenges Eg <code>lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semeval2007t2.jl#L43-L46' class='documenter-source'>source</a><br></p>
-<p><a id='CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7-Tuple{AbstractString}'>#</a>
-<strong><code>CorpusLoaders.Semeval2007t7.load_solutions_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semeval2007t2.jl#L41-L44' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.load_scws-Tuple{IO}' href='#CorpusLoaders.load_scws-Tuple{IO}'>#</a>
+<strong><code>CorpusLoaders.load_scws</code></strong> &mdash; <em>Method</em>.</p>
+<p>Load the Stanford's Contextual Word Similarities (SCWS) dataset. <a href="http://www-nlp.stanford.edu/~ehhuang/SCWS.zip">Download</a> Returns a 4-tuple.</p>
+<ul>
+<li>wordpairs: a (n imes 2) matrix of the target words (strings)</li>
+<li>groundsim: a (n) vector of floats, between 0 and 10.0. This is the average human rating on similarity of the words. 10.0 means identical.</li>
+</ul>
+<p>This loading method does not make the per rater similarity ratings available. It could reasonabled by extended to do so.</p>
+<ul>
+<li>contexts: a (n  imes 2) maxtrix of vectors of words (strings). With target word removed from each.</li>
+<li>indexes: a (n   imes 2) matrix of integers, which have the index from which the target word was removed.</li>
+</ul>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/./similarity.jl#L34-L43' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.load_semcor-Tuple{AbstractString}' href='#CorpusLoaders.load_semcor-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.load_semcor</code></strong> &mdash; <em>Method</em>.</p>
+<p>Load up a semcor corpus. Eg <code>load_semcor("corpora/semcor2.1/brown1/tagfiles/")</code></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semcor.jl#L108' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.load_solutions_semeval2007t7-Tuple{AbstractString}' href='#CorpusLoaders.load_solutions_semeval2007t7-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.load_solutions_semeval2007t7</code></strong> &mdash; <em>Method</em>.</p>
 <p>Load SemEval 2007 Task 7 corpus of solutions Eg <code>load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")</code></p>
-<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/7954936d9557128e6799c66e020fd896f2c5e763/src/semeval2007t2.jl#L77-L80' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semeval2007t2.jl#L75-L78' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.load_wordsim353-Tuple{IO}' href='#CorpusLoaders.load_wordsim353-Tuple{IO}'>#</a>
+<strong><code>CorpusLoaders.load_wordsim353</code></strong> &mdash; <em>Method</em>.</p>
+<p>Load a WordSim353 dataset. Returns a 2-tuple.</p>
+<ul>
+<li>wordpairs: a (n imes2) matrix of words (strings)</li>
+<li>groundsim: a (n) vector of floats, between 0 and 10.0.  The human rating on similarity of the words. 10.0 means identical.</li>
+</ul>
+<p>This loading method does not make the per rater similarity ratings available. It could reasonabled by extended to do so.</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/./similarity.jl#L16-L22' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.pennPOStoWordNetPOS-Tuple{AbstractString}' href='#CorpusLoaders.pennPOStoWordNetPOS-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.pennPOStoWordNetPOS</code></strong> &mdash; <em>Method</em>.</p>
+<p>Convert a Penn Treebank part of speech tag to a </p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/tags.jl#L5-L7' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.poormans_tokenize-Tuple{AbstractString}' href='#CorpusLoaders.poormans_tokenize-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.poormans_tokenize</code></strong> &mdash; <em>Method</em>.</p>
+<p><code>poormans_tokenize</code></p>
+<p>Tokenizes by removing punctuation and splitting on spaces</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/tokenizers.jl#L4-L8' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}' href='#CorpusLoaders.punctuation_space_tokenize-Tuple{AbstractString}'>#</a>
+<strong><code>CorpusLoaders.punctuation_space_tokenize</code></strong> &mdash; <em>Method</em>.</p>
+<p>Tokenizes by removing punctuation, unless it occurs inside of a word</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/tokenizers.jl#L14' class='documenter-source'>source</a><br></p>
+<p><a id='CorpusLoaders.strip_tags-Tuple{Array{CorpusLoaders.TaggedWord,1}}' href='#CorpusLoaders.strip_tags-Tuple{Array{CorpusLoaders.TaggedWord,1}}'>#</a>
+<strong><code>CorpusLoaders.strip_tags</code></strong> &mdash; <em>Method</em>.</p>
+<p>Remove all the tagging information, returning just tokenized words</p>
+<p><a target='_blank' href='https://github.com/oxinabox/CorpusLoaders.jl/tree/f518a94e997b332c1496990c2cce1f059d8f341c/src/semcor.jl#L148' class='documenter-source'>source</a><br></p>
               
             </div>
           </div>
@@ -206,5 +228,5 @@ end</code></pre>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-09-18 12:42:10.067882
+Build Date UTC : 2016-09-24 08:01:32.326247
 -->
