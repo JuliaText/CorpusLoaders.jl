@@ -16,3 +16,9 @@ include("./similarity.jl")
 @testset "tag conversion" begin
 	include("tags.jl")
 end
+
+include("util.jl")
+
+@testset "semeval2007t7" begin
+	include("./semeval2007t7.jl")
+end
