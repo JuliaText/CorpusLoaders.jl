@@ -5,6 +5,8 @@ export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence,
 		strip_tags, SemcorIndex, sensekey
 
 
+@enum SegmentBy NoSegmenting ByDocument ByParagraph BySentence
+
 abstract TaggedWord
 immutable SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
     pos::S
@@ -44,15 +46,15 @@ function parse_tagged_word(line::AbstractString)
 end
 
 
-function parse_semcorfile(lines)
-    #GOLDPLATE: There is a nicer way to do this, lazily, with coroutines.
-    sents = Vector{TaggedWord}[]
+function parse_semcorfile(lines, segmentby::SegmentBy=BySentence)
+	#GOLDPLATE: There is a nicer way to do this, lazily, with coroutines.
+    chunks = Vector{TaggedWord}[]
 
     ignore(line) = nothing
-    get_tagged(line) = push!(sents[end], parse_tagged_word(line))
-    get_sense_annotated(line) = push!(sents[end], parse_sense_annotated_word(line))
-    get_entity_annodated(line) = push!(sents[end], parse_entity_annotated_word(line))
-
+    get_tagged(line) = push!(chunks[end], parse_tagged_word(line))
+    get_sense_annotated(line) = push!(chunks[end], parse_sense_annotated_word(line))
+    get_entity_annodated(line) = push!(chunks[end], parse_entity_annotated_word(line))
+	push_chunk!(line) = push!(chunks, TaggedWord[]) #New Chunk
 
     subparsers = Dict(
         "<wf cmd=tag"=> get_tagged,
@@ -63,11 +65,19 @@ function parse_semcorfile(lines)
         "</context" => ignore,
         "<p" => ignore,#parastart,
         "</p" => ignore, #paraend,
-        "<s" => line -> push!(sents,TaggedWord[]), #sentstart,
+        "<s" => ignore, #sentstart,
         "</s" => ignore#sentend
     )
-    
-    for line in lines
+
+	if segmentby==ByDocument
+		subparsers["<context"]=push_chunk!
+	elseif	segmentby == ByParagraph
+		subparsers["<p"]=push_chunk!
+	elseif segmentby == BySentence
+		subparsers["<s"]=push_chunk!
+	end
+
+	for line in lines
         try
             found = false
             for (prefix, subparse) in subparsers
@@ -82,8 +92,32 @@ function parse_semcorfile(lines)
             error("Error parsing \"$line\". $ee")
         end
     end
-    return sents
+    return chunks
 end
+
+
+"""
+Load Semcor lazily, returns a sequence of Tuples
+where the first element is a word, and the next is it's content
+"""
+function lazyload_semcor(tagdir_path::AbstractString,
+						 window_size::Int)
+    Task() do
+        for filename in [joinpath(tagdir_path, d) for d in readdir(tagdir_path)]
+            document_chunks = parse_semcorfile(eachline(filename), ByDocument)
+			for document::Vector{TaggedWord} in document_chunks
+				indexed_instances = ((ii, instance) for (ii,instance) in enumerate(document)
+													if  isa(instance, SenseAnnotatedWord))
+				for (ii, instance) in indexed_instances
+					context = window_excluding_center(ii, document, window_size)
+					produce((instance, context))
+				end
+			end
+		end
+    end
+end
+
+
 
 
 """
@@ -146,5 +180,5 @@ function index_semcor(tagged_sentence_stream)
 end
 
 """Remove all the tagging information, returning just tokenized words"""
-strip_tags(sent::TaggedSentence) = [w.word for w in sent]
+strip_tags(sent) = [w.word for w in sent]
 
