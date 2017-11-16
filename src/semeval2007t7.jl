@@ -39,7 +39,6 @@ function breakdown(textnode, stopwords::Function)
             end
         end
     end
-    
     instances, words
 end
 
@@ -47,20 +46,17 @@ end
 """
 Lazily load semeval 2007 Task 7 corpus of challenges
 Context is the sentence the word occurs in
-Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")`
 """
-function lazyload_challenges_semeval2007t7(xml_file::AbstractString)
-    xdoc = parse_file(xml_file)
+function lazyload_challenges_semeval2007t7(xdoc::XMLDocument)
     xroot = root(xdoc)
-    Task() do
+    Channel(ctype=WsdChallenge, csize=Inf) do ch
         for text_node in child_elements(xroot)
             for sentence_node in child_elements(text_node)
                 sentence = punctuation_space_tokenize(content(sentence_node))
-
-                for lemma_node in child_elements(sentence_node)
+                for instance in child_elements(sentence_node) # elements (always instances) NOT nodes (can be just text)
                     context = sentence
-					produce(WsdChallenge(parse_instance(instance)..., context))
-				end
+                    put!(ch, WsdChallenge(parse_instance(instance)..., context))
+                end
             end
         end
     end
@@ -71,48 +67,38 @@ end
 Lazily load semeval 2007 Task 7 corpus of challenges
 giving every word with a window_sized context, from the document.
 Filters out tokens from `stopwords`.
-Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml", 10, ispunct)`
 """
 function lazyload_challenges_semeval2007t7(xdoc::XMLDocument,
-										   window_size::Int,
-										   stopwords::Function=x->false)
-    ret = WsdChallenge[]
+                                           window_size::Int,
+                                           stopwords::Function=x->false)
     xroot = root(xdoc)
-    for text_node in child_elements(xroot)
-        instances, words = breakdown(text_node, stopwords)
-        for (ii, instance) in instances
-            context = window_excluding_center(ii, words, window_size)
-            push!(ret, WsdChallenge(parse_instance(instance)..., context))
+    Channel(ctype=WsdChallenge, csize=Inf) do ch
+        for text_node in child_elements(xroot)
+            instances, words = breakdown(text_node, stopwords)
+            for (ii, instance) in instances
+                context = window_excluding_center(ii, words, window_size)
+                put!(ch, WsdChallenge(parse_instance(instance)..., context))
+            end
         end
-	end
-    return ret
+    end
 end
 
 
 """
 Load SemEval 2007 Task 7 corpus of challenges
-Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.xml")`
 """
-function load_challenges_semeval2007t7(xml_file::AbstractString)
-	collect(lazyload_challenges_semeval2007t7(xml_file))
+function load_challenges_semeval2007t7(args...)
+    collect(lazyload_challenges_semeval2007t7(args...))
 end
 
-
-
-function lazyload_challenges_semeval2007t7(
-                                            stream::IO,
-                                            window_size::Int,
-                                            stopwords::Function=x->false)
+function lazyload_challenges_semeval2007t7(stream::IO, args...)
     xdoc = parse_string(readstring(stream))
-    lazyload_challenges_semeval2007t7(xdoc, window_size, stopwords)
+    lazyload_challenges_semeval2007t7(xdoc, args...)
 end
 
-function lazyload_challenges_semeval2007t7(
-                                            filename::AbstractString,
-                                            window_size::Int,
-                                            stopwords::Function=x->false)
+function lazyload_challenges_semeval2007t7(filename::AbstractString, args...)
     xdoc = parse_file(filename)
-    lazyload_challenges_semeval2007t7(xdoc, window_size, stopwords)
+    lazyload_challenges_semeval2007t7(xdoc, args...)
 end
 
 
@@ -150,7 +136,7 @@ Load SemEval 2007 Task 7 corpus of solutions
 Eg `load_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")`
 """
 function load_solutions_semeval2007t7(keyfile::AbstractString)
-	collect(lazyload_solutions_semeval2007t7(keyfile))
+    collect(lazyload_solutions_semeval2007t7(keyfile))
 end
 
 
