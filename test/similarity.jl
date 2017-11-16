@@ -1,3 +1,6 @@
+using Base.Test
+using CorpusLoaders
+
 
 @testset "wordsim353" begin
 	egs = """Word 1,Word 2,Human (mean)

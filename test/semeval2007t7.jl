@@ -1,3 +1,7 @@
+using Base.Test
+using CorpusLoaders
+
+
 @testset "windowing" begin
     eg1 = """
     <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -18,7 +22,7 @@
     </text>
     </corpus>
     """;
-    r1 = lazyload_challenges_semeval2007t7(IOBuffer(eg1), 10, x->!isalnum(x)) |> collect
+    r1 = lazyload_challenges_semeval2007t7(IOBuffer(eg1), 10, x->!all(isalnum, x)) |> collect
 
 
     @test length(r1) == 3
@@ -51,7 +55,7 @@
     </text>
     </corpus>
     """;
-    r2 = lazyload_challenges_semeval2007t7(IOBuffer(eg2), 10, x->!isalnum(x)) |> collect
+    r2 = lazyload_challenges_semeval2007t7(IOBuffer(eg2), 10) |> collect
 
 
     @test r2[1].context ==["A","B","C","D"]

@@ -1,5 +1,3 @@
-
-
 using Base.Test
 using CorpusLoaders
 
@@ -10,7 +8,7 @@ using CorpusLoaders
 end
 
 
-@testset "Punctiontion Space Tokenizer" begin
+@testset "Punctuation Space Tokenizer" begin
 	@test punctuation_space_tokenize("a b c") == ["a", "b", "c"]
 	@test punctuation_space_tokenize("a's b c") == ["a's", "b", "c"]
 	@test punctuation_space_tokenize("a b- c") == ["a", "b", "c"]

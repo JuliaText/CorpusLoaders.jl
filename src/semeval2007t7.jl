@@ -1,4 +1,3 @@
-using LightXML
 
 export load_challenges_semeval2007t7, lazyload_challenges_semeval2007t7, load_solutions_semeval2007t7, lazyload_solutions_semeval2007t7
 
@@ -67,6 +66,7 @@ function lazyload_challenges_semeval2007t7(xml_file::AbstractString)
     end
 end
 
+
 """
 Lazily load semeval 2007 Task 7 corpus of challenges
 giving every word with a window_sized context, from the document.
@@ -76,16 +76,16 @@ Eg `lazyload_challenges_semeval2007t7("semeval2007_t7/test/eng-coarse-all-words.
 function lazyload_challenges_semeval2007t7(xdoc::XMLDocument,
 										   window_size::Int,
 										   stopwords::Function=x->false)
-	xroot = root(xdoc)
-	Task() do
-		for text_node in child_elements(xroot)
-			instances, words = breakdown(text_node, stopwords)
-			for (ii, instance) in instances
-				context = window_excluding_center(ii, words, window_size)
-				produce(WsdChallenge(parse_instance(instance)..., context))
-			end
-		end
+    ret = WsdChallenge[]
+    xroot = root(xdoc)
+    for text_node in child_elements(xroot)
+        instances, words = breakdown(text_node, stopwords)
+        for (ii, instance) in instances
+            context = window_excluding_center(ii, words, window_size)
+            push!(ret, WsdChallenge(parse_instance(instance)..., context))
+        end
 	end
+    return ret
 end
 
 
@@ -133,17 +133,15 @@ Lazy Load SemEval 2007 Task 7 corpus of solutions
 Eg `lazyload_solutions_semeval2007t7("semeval2007_t7/key/dataset21.test.key")`
 """
 function lazyload_solutions_semeval2007t7(key_file="data/corpora/wsd/semeval2007_t7/key/dataset21.test.key")
-    Task() do
-        for line in eachline(key_file)
-            line_data, comment = split(line,"!!")
-            fields = split(line_data)
-            doc_id = fields[1]
-            instance_id = fields[2]
-            solutions = fields[3:end]
+    Base.Generator(eachline(key_file)) do line
+        line_data, comment = split(line,"!!")
+        fields = split(line_data)
+        doc_id = fields[1]
+        instance_id = fields[2]
+        solutions = fields[3:end]
 
-            lemma,pos = match(r"lemma=(.*)#(.)", comment).captures
-            produce(WsdSolution(instance_id, lemma, pos[1], solutions))
-        end
+        lemma,pos = match(r"lemma=(.*)#(.)", comment).captures
+        WsdSolution(instance_id, lemma, pos[1], solutions)
     end
 end
 
