@@ -1,6 +1,8 @@
 module CorpusLoaders
 
 using LightXML
+using DataDeps
+
 
 const AbstractStringVector = AbstractVector{<:AbstractString}
 
