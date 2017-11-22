@@ -11,10 +11,11 @@ RegisterDataDep(
     Samuel Reese, Gemma Boleda, Montse Cuadros, Lluís Padró, German Rigau. Wikicorpus: A Word-Sense Disambiguated Multilingual Wikipedia Corpus. In Proceedings of 7th Language Resources and Evaluation Conference (LREC'10), La Valleta, Malta. May, 2010.
     """,
     ["http://www.cs.upc.edu/~nlp/wikicorpus/README.txt", "http://www.cs.upc.edu/~nlp/wikicorpus/raw.en.tgz"],
+    "935c81879c76ac6e5d80abd6d8c7eb276cbd90c74cfa422e3483c20960209155",
     post_fetch_method=[
         identity,
         f-> run(is_windows() ? `7z x -y $f` : `tar -xzf $f`)
     ]
 )
 
-datadep"Wikicorpus-en raw"
+readdir(datadep"Wikicorpus-en raw")
