@@ -1,3 +1,4 @@
+using Base.Test
 import CorpusLoaders: window_excluding_center
 
 @testset "Window excluding center" begin

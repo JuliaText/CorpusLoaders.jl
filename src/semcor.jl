@@ -7,7 +7,8 @@ export TaggedWord, SenseAnnotatedWord, PosTaggedWord, TaggedSentence,
 
 @enum SegmentBy NoSegmenting ByDocument ByParagraph BySentence
 
-abstract TaggedWord
+abstract type TaggedWord end
+
 immutable SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
     pos::S
     lemma::S
@@ -22,7 +23,7 @@ immutable PosTaggedWord{S<:AbstractString} <: TaggedWord
     word::S
 end
 
-typealias TaggedSentence Vector{TaggedWord}
+const TaggedSentence = Vector{TaggedWord}
 
 
 
@@ -142,7 +143,7 @@ end
 """Load up a semcor corpus. Eg `load_semcor("corpora/semcor2.1/brown1/tagfiles/")`"""
 load_semcor(tagdir_path::AbstractString) = collect(lazyload_semcor(tagdir_path))
 
-typealias SemcorIndex Dict{String, Vector{Tuple{TaggedSentence, Int}}}
+const SemcorIndex =  Dict{String, Vector{Tuple{TaggedSentence, Int}}}
 
 """
 Index a semcor stream, by word (sense-key),

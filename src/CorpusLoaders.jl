@@ -1,7 +1,8 @@
 module CorpusLoaders
 
-typealias AbstractStringVector AbstractVector
-#typealias AbstractStringVector{S<:AbstractString} AbstractVector{S}
+using LightXML
+
+const AbstractStringVector = AbstractVector{<:AbstractString}
 
 include("util.jl")
 
