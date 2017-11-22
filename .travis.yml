@@ -4,8 +4,8 @@ os:
   - linux
   - osx
 julia:
-    #  - release
-  - nightly
+      - release
+
 notifications:
   email: false
 # uncomment the following lines to override the default test script
@@ -13,11 +13,10 @@ notifications:
 #  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("CorpusLoaders"); Pkg.test("CorpusLoaders"; coverage=true)'
 after_success:
-  # Push Documentation  
+  # Push Documentation
   - julia -e 'Pkg.add("Documenter")'
   - julia -e 'cd(Pkg.dir("CorpusLoaders")); include(joinpath("docs", "make.jl"))'
   # push coverage results to Coveralls
   - julia -e 'cd(Pkg.dir("CorpusLoaders")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
   - julia -e 'cd(Pkg.dir("CorpusLoaders")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-   
