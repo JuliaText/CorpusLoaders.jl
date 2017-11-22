@@ -1,5 +1,5 @@
 
-
+unpack(f) = BinDeps.unpack_cmd(f, cwd(), last(splitext(f)), last(first(splitext(f))))
 
 RegisterDataDep(
     "Wikicorpus-en raw",
@@ -12,10 +12,7 @@ RegisterDataDep(
     """,
     ["http://www.cs.upc.edu/~nlp/wikicorpus/README.txt", "http://www.cs.upc.edu/~nlp/wikicorpus/raw.en.tgz"],
     "935c81879c76ac6e5d80abd6d8c7eb276cbd90c74cfa422e3483c20960209155",
-    post_fetch_method=[
-        identity,
-        f-> run(is_windows() ? `7z x -y $f` : `tar -xzf $f`)
-    ]
+    post_fetch_method=[identity, unpack]
 )
 
 readdir(datadep"Wikicorpus-en raw")
