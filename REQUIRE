@@ -3,3 +3,4 @@ LightXML
 DataDeps
 BinDeps
 Glob
+StringInterning
