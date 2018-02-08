@@ -1,24 +1,21 @@
 using CorpusLoaders
 using Base.Test
 
-@testset "Semcor" begin
-	include("semcor.jl")
+testsets = ["semcor.jl",
+            "tokenizers.jl",
+            "similarity.jl",
+            "tags.jl",
+            "util.jl",
+            "semeval2007t7.jl",
+            "wikicorpus.jl"
+           ]
+
+for fn in testsets
+    @testset "$fn" begin
+	    include(fn)
+    end
 end
 
 
-@testset "Tokenizers" begin
-	include("./tokenizers.jl")
-end
-
-include("./similarity.jl")
 
 
-@testset "tag conversion" begin
-	include("tags.jl")
-end
-
-include("util.jl")
-
-@testset "semeval2007t7" begin
-	include("./semeval2007t7.jl")
-end
