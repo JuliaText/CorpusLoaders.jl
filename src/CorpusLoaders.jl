@@ -4,10 +4,16 @@ using LightXML
 using DataDeps
 using Glob
 using BinDeps
-using StringInterning
+using InternedStrings
 using StringEncodings
 
 const AbstractStringVector = AbstractVector{<:AbstractString}
+
+function __init__()
+    print(DataDeps)
+    include("./datadeps.jl")
+end
+
 
 include("util.jl")
 
