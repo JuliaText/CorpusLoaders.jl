@@ -1,8 +1,8 @@
 julia 0.6
 LightXML
-DataDeps 0.2.2
+DataDeps 0.2.3
 Glob
-StringInterning
-WordTokenizers
-MultiResolutionIterators
+InternedStrings
 StringEncodings
+#WordTokenizers
+#MultiResolutionIterators
