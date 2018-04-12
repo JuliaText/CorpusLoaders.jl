@@ -3,3 +3,6 @@ LightXML
 DataDeps 0.2.2
 Glob
 StringInterning
+WordTokenizers
+MultiResolutionIterators
+StringEncodings
