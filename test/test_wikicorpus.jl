@@ -31,7 +31,7 @@ using InternedStrings
 
 
     docs_of_words = full_consolidate(merge_levels(docs, (!lvls)(WikiCorpus(), :doc, :word)))
-    @test typeof(docs_of_words) == Vector{Document{Vector{InternedString}}}
+    @test typeof(docs_of_words) == Vector{Document{Vector{InternedString}, InternedString}}
     @test length(docs_of_words) == length(docs)
     @test sum(length.(docs_of_words)) == length(words)
 end

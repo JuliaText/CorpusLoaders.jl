@@ -53,16 +53,8 @@ Document(content)=Document(nothing,content)
 end
 
 
-#_call_on_content(consolidate, Document("foos",["a", "b", "c"]))
-
-
-function MultiResolutionIterators.consolidate(aiter::T)::AnnotatedIterator where T<:AnnotatedIterator
-    _call_on_content(consolidate, aiter)
-end
-
 function MultiResolutionIterators.apply(ff, aiter::T)::AnnotatedIterator where T<:AnnotatedIterator
     _call_on_content(aiter) do content
-        @show typeof(content)
         MultiResolutionIterators.apply(ff, content)
     end
 end

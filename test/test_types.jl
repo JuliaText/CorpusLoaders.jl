@@ -23,7 +23,10 @@ end
     end
 
     @testset "apply" begin
-        adoc = MultiResolutionIterators.apply(uppercase, Document("foos",["a", "b", "c"]))
+        adoc = MultiResolutionIterators.apply(Document("foos",["a", "b", "c"])) do iter
+            map(uppercase,iter)
+        end
+
         @test adoc.title == "foos"
         cdoc = collect(adoc)
         @test cdoc[1] == "A"
