@@ -1,6 +1,9 @@
-struct WikiCorpus end
+struct WikiCorpus{S}
+    path::S
+end
+WikiCorpus() = WikiCorpus(datadep"English WikiCorpus v1.0")
 
-MultiResolutionIterators.levelname_map(::WikiCorpus) = [
+MultiResolutionIterators.levelname_map(::Type{WikiCorpus}) = [
     :doc=>1,
     :section=>2,
     :para=>3, :line=>3,
@@ -21,12 +24,11 @@ function push_nonempty!(xss, xs)
 nothing
 end
 
-function load(::WikiCorpus, path=datadep"English WikiCorpus v1.0")
-
+function load(corpus::WikiCorpus)
     UltimateType = Document{@NestedVector(InternedString, 4), InternedString}
 
     Channel(ctype=UltimateType, csize=4) do docs
-        for file in readdir(glob"*Text*", path)
+        for file in readdir(glob"*Text*", corpus.path)
             open(file, enc"latin1") do fh
                 local cur_doc_title
                 cur_doc_content=@NestedVector(InternedString, 4)() # content is for a given section

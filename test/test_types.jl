@@ -22,18 +22,6 @@ end
         @test_throws BoundsError cdoc[4]
     end
 
-    @testset "apply" begin
-        adoc = MultiResolutionIterators.apply(Document("foos",["a", "b", "c"])) do iter
-            map(uppercase,iter)
-        end
-
-        @test adoc.title == "foos"
-        cdoc = collect(adoc)
-        @test cdoc[1] == "A"
-        @test cdoc[2] == "B"
-        @test cdoc[3] == "C"
-        @test_throws BoundsError cdoc[4]
-    end
 
     @testset "full_consolidate" begin
         cdocs = full_consolidate([Document("foos",["a", "b", "c"]), Document("bars",["A", "B"])])
