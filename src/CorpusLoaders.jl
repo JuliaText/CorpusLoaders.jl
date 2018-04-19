@@ -6,7 +6,8 @@ using InternedStrings
 using Glob
 using StringEncodings
 
-export Document, load
+export Document, title
+export load
 
 export WikiCorpus
 

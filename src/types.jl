@@ -31,6 +31,7 @@ struct Document{T, S} <: AnnotatedIterator{T}
 end
 
 Document(content)=Document(nothing,content)
+title(doc::Document) = doc.title
 
 #### Making nice with MultiResolutionIterators
 
