@@ -9,16 +9,17 @@ using StringEncodings
 export Document, title
 export load
 
-export WikiCorpus
+export WikiCorpus, SemCor
 
 function __init__()
 
     include("WikiCorpus_DataDeps.jl")
+    include("SemCor_DataDeps.jl")
 end
 
 include("types.jl")
 include("WikiCorpus.jl")
-
+include("SemCor.jl")
 
 
 end

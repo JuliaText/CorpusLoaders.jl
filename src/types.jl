@@ -58,6 +58,29 @@ function MultiResolutionIterators.apply(ff, aiter::T)::AnnotatedIterator where T
     end
 end
 
+########################
+
+abstract type TaggedWord end
+
+struct SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
+    pos::S
+    lemma::S
+    wnsn::Int
+    lexsn::S
+    word::S
+end
+
+
+struct PosTaggedWord{S<:AbstractString} <: TaggedWord
+    pos::S
+    word::S
+end
+
+const TaggedSentence = Vector{TaggedWord}
+
+word(tword::TaggedWord) = tword.word
+sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
+
 
 #######################
 

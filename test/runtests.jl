@@ -2,7 +2,8 @@ using Base.Test
 using CorpusLoaders
 
 files = ["types",
-         "wikicorpus"
+         "wikicorpus",
+         "SemCor"
         ]
 
 
