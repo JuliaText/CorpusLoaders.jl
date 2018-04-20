@@ -42,11 +42,9 @@ title(doc::Document) = doc.title
         fieldval = :(getfield(aiter, $(Meta.quot(fn))))
         if fn == :content
             # consolidate only the content
-            #Expr(:call, :ff, Expr(:call, :getfield, :aiter, fn))
             Expr(:call, :ff, fieldval)
         else
              # keep everything else as is
-            #Expr(:call, :getfield, :aiter, fn)
             fieldval
         end
     end

@@ -14,7 +14,7 @@ using InternedStrings
 #    @test all(isa.(words, AbstractString))
 #    @test "a" ∈ words
 #    @test "the" ∈ words
-    words = collect(merge_levels(docs, (!lvls)(WikiCorpus(), :word)))
+    words = collect(merge_levels(docs, (!lvls)(WikiCorpus, :word)))
     @test typeof(words) == Vector{InternedString}
     @test length(words) >= length(docs)
 
