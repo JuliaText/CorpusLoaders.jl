@@ -41,7 +41,7 @@ title(doc::Document) = doc.title
     args =  map(fieldnames(T)) do fn
         fieldval = :(getfield(aiter, $(Meta.quot(fn))))
         if fn == :content
-            # consolidate only the content
+            # work  only on the content
             Expr(:call, :ff, fieldval)
         else
              # keep everything else as is
@@ -79,6 +79,7 @@ end
 const TaggedSentence = Vector{TaggedWord}
 
 word(tword::TaggedWord) = tword.word
+word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
 
 
