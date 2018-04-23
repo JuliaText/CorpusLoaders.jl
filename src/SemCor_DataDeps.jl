@@ -1,10 +1,10 @@
 using DataDeps
 
 
-for (ver, checksum) in [("1.6", nothing),
-            ("1.7", nothing),
-            ("1.7.1", nothing),
-            ("2.0", nothing),
+for (ver, checksum) in [("1.6", "16814254fe194d55a2fcc24858aa76d71de3c49e495bd98478cc7345e766d8b7"),
+            ("1.7", "0495577ac3a87c2a64fe6189798ea046de0f44943dfb7b60fe38cf648d34c421"),
+            ("1.7.1", "70b9eb7ca0dc9d67655f9d671d40be10aeff490f0bea4f10cb1946127b74c102"),
+            ("2.0", "93fbae725f0125dedb7369403fda1dace85b2dcd8a523ed80af23e863b18ef2c"),
             ("3.0", "a8000014d6fc864f8bd9d83c62be601151cadd617c6554a39a1ad38b4b3f017b")]
 
     RegisterDataDep("SemCor $ver",
