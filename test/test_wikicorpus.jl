@@ -14,7 +14,7 @@ using InternedStrings
 #    @test all(isa.(words, AbstractString))
 #    @test "a" ∈ words
 #    @test "the" ∈ words
-    words = collect(merge_levels(docs, (!lvls)(WikiCorpus, :word)))
+    words = collect(flatten_levels(docs, (!lvls)(WikiCorpus, :word)))
     @test typeof(words) == Vector{InternedString}
     @test length(words) >= length(docs)
 
@@ -30,7 +30,7 @@ using InternedStrings
 
 
 
-    docs_of_words = full_consolidate(merge_levels(docs, (!lvls)(WikiCorpus, :doc, :word)))
+    docs_of_words = full_consolidate(flatten_levels(docs, (!lvls)(WikiCorpus, :doc, :word)))
     @test typeof(docs_of_words) == Vector{Document{Vector{InternedString}, InternedString}}
     @test length(docs_of_words) == length(docs)
     @test sum(length.(docs_of_words)) == length(words)

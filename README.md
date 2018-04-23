@@ -45,7 +45,7 @@ Document, section, paragaph/line, sentence, word.
 Note that paragaph/line level does not differnetiate between a paragraph of prose, vs a line in a list.
 
 Most users are not going to be wanting that level of structure,
-so should use `merge_levels` (from MultiResolutionIterators.jl)  to get rid of levels they don't want.
+so should use `flatten_levels` (from MultiResolutionIterators.jl)  to get rid of levels they don't want.
 
 
 
@@ -80,7 +80,7 @@ julia> MultiResolutionIterators.levelname_map(WikiCorpus)
  :token=>5
  :char=>6
 
-julia> merge_levels(subcorpus, (!lvls)(WikiCorpus, :word)) |> full_consolidate #Lets just get a series of words
+julia> flatten_levels(subcorpus, (!lvls)(WikiCorpus, :word)) |> full_consolidate #Lets just get a series of words
 27655-element Array{InternedStrings.InternedString,1}:
  "Henry"
  "Hallam"

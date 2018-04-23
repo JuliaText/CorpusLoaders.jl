@@ -6,7 +6,7 @@ using InternedStrings
 using Glob
 using StringEncodings
 
-export Document, title
+export Document, title, sensekey, word
 export load
 
 export WikiCorpus, SemCor

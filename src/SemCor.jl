@@ -49,7 +49,7 @@ end
 
 function parse_punc(line::AbstractString)
     captures = match(r"<punc>(.*)</punc>", line).captures
-    PosTaggedWord( "PUNC", first(captures))
+    PosTaggedWord("PUNC", first(captures))
 end
 
 function parse_semcorfile(filename)
@@ -58,7 +58,7 @@ function parse_semcorfile(filename)
     local sent
     local para
     paras = @NestedVector(TaggedWord,3)()
-    context = Document(paras, basename(filename))
+    context = Document(InternedString(basename(filename)), paras)
     lines = collect(eachline(filename))
 
     ignore(line) = nothing
@@ -101,20 +101,23 @@ function parse_semcorfile(filename)
             for (prefix, subparse) in subparsers
                 if startswith(line, prefix)
                     found=true
-                    subparse(line)
+                    subparse(InternedString(line))
                     break
                 end
             end
             @assert(found, "No parser for \"$line\"")
-        catch ee
-            error("Error parsing \"$line\". $ee")
+        #catch ee
+        #    error("Error parsing \"$line\". $ee")
         end
     end
     return context
 end
 
 function load(corpus::SemCor, doc_buffersize=16)
-    Channel(;ctype=Vector{Document{@NestedVector(TaggedWord, 3), InternedString}}, csize=doc_buffersize) do ch
-        put!.(parse_semcorfile.(corpus.filepaths))
+    Channel(;ctype=Document{@NestedVector(TaggedWord, 3), InternedString}, csize=doc_buffersize) do ch
+        for fn in corpus.filepaths
+            doc = parse_semcorfile(fn)
+            put!(ch, doc)
+        end
     end
 end
