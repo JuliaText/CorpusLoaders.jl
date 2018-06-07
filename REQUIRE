@@ -4,5 +4,5 @@ DataDeps 0.2.3
 Glob
 InternedStrings
 StringEncodings
-#WordTokenizers
-#MultiResolutionIterators
+WordTokenizers
+MultiResolutionIterators
