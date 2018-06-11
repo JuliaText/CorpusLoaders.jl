@@ -33,5 +33,7 @@ The corpus type is an indexer for using named levels with MultiResolutionInterat
 so `lvls(Corpus, :para)` works.
 
 ## Corpora
+Follow the links below for full docs on the usage of the corpora.
+
  - [WikiCorpus](docs/src/WikiCorpus.md)
  - [SemCor](docs/src/SemCor.md)
