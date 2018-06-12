@@ -4,7 +4,7 @@ os:
   - linux
 #  - osx
 env:
-  - DEPS_ALWAY_ACCEPT=true
+  - DATADEPS_ALWAY_ACCEPT=true
 julia:
   - 0.6
   - nightly
