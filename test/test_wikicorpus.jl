@@ -10,12 +10,12 @@ using InternedStrings
 
 
     @test typeof(docs) ==
-        Vector{Document{CorpusLoaders.@NestedVector(InternedString, 4), InternedString}}
+        Vector{Document{CorpusLoaders.@NestedVector(String, 4), String}}
 #    @test all(isa.(words, AbstractString))
 #    @test "a" ∈ words
 #    @test "the" ∈ words
     words = collect(flatten_levels(docs, (!lvls)(WikiCorpus, :word)))
-    @test typeof(words) == Vector{InternedString}
+    @test typeof(words) == Vector{String}
     @test length(words) >= length(docs)
 
     vocab = Set(words)
@@ -31,7 +31,7 @@ using InternedStrings
 
 
     docs_of_words = full_consolidate(flatten_levels(docs, (!lvls)(WikiCorpus, :doc, :word)))
-    @test typeof(docs_of_words) == Vector{Document{Vector{InternedString}, InternedString}}
+    @test typeof(docs_of_words) == Vector{Document{Vector{String}, String}}
     @test length(docs_of_words) == length(docs)
     @test sum(length.(docs_of_words)) == length(words)
 end
