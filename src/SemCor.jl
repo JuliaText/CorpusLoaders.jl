@@ -58,7 +58,7 @@ function parse_semcorfile(filename)
     local sent
     local para
     paras = @NestedVector(TaggedWord,3)()
-    context = Document(InternedString(basename(filename)), paras)
+    context = Document(intern(basename(filename)), paras)
     lines = collect(eachline(filename))
 
     ignore(line) = nothing
@@ -101,7 +101,7 @@ function parse_semcorfile(filename)
             for (prefix, subparse) in subparsers
                 if startswith(line, prefix)
                     found=true
-                    subparse(InternedString(line))
+                    subparse(line)
                     break
                 end
             end
@@ -114,7 +114,7 @@ function parse_semcorfile(filename)
 end
 
 function load(corpus::SemCor, doc_buffersize=16)
-    Channel(;ctype=Document{@NestedVector(TaggedWord, 3), InternedString}, csize=doc_buffersize) do ch
+    Channel(;ctype=Document{@NestedVector(TaggedWord, 3), String}, csize=doc_buffersize) do ch
         for fn in corpus.filepaths
             doc = parse_semcorfile(fn)
             put!(ch, doc)
