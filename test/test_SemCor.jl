@@ -14,7 +14,7 @@ using InternedStrings
     @test typeof(words) == Vector{CorpusLoaders.TaggedWord}
 
     plain_words = word.(words)
-    @test typeof(plain_words) <: Vector{InternedString}
+    @test typeof(plain_words) <: Vector{String}
     @test all(startswith.(title.(docs), "br"))
 end
 
