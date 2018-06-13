@@ -62,21 +62,21 @@ end
 
 abstract type TaggedWord end
 
-struct SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
-    pos::S
-    lemma::S
+struct SenseAnnotatedWord <: TaggedWord
+    pos::String
+    lemma::String
     wnsn::Int
-    lexsn::S
-    word::S
+    lexsn::String
+    word::String
     function SenseAnnotatedWord(pos, lemma, wnsn, lexsn, word)
           new(intern(pos), intern(lemma), wnsn, intern(lexsn), intern(word))
     end
 end
 
 
-struct PosTaggedWord{S<:AbstractString} <: TaggedWord
-    pos::S
-    word::S
+struct PosTaggedWord <: TaggedWord
+    pos::String
+    word::String
     function PosTaggedWord(pos, word)
           new(intern(pos), intern(word))
     end

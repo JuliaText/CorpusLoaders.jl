@@ -53,13 +53,10 @@ function parse_punc(line::AbstractString)
 end
 
 function parse_semcorfile(filename)
-    chunks = Vector{TaggedWord}[]
-
     local sent
     local para
     paras = @NestedVector(TaggedWord,3)()
     context = Document(intern(basename(filename)), paras)
-    lines = collect(eachline(filename))
 
     ignore(line) = nothing
 
@@ -95,7 +92,7 @@ function parse_semcorfile(filename)
     ]
 
 
-	for line in lines
+	for line in eachline(filename)
         try
             found = false
             for (prefix, subparse) in subparsers
@@ -106,8 +103,9 @@ function parse_semcorfile(filename)
                 end
             end
             @assert(found, "No parser for \"$line\"")
-        #catch ee
-        #    error("Error parsing \"$line\". $ee")
+        catch ee
+            warn("Error parsing \"$line\". $ee")
+            rethrow()
         end
     end
     return context
