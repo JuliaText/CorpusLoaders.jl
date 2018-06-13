@@ -68,12 +68,18 @@ struct SenseAnnotatedWord{S<:AbstractString} <: TaggedWord
     wnsn::Int
     lexsn::S
     word::S
+    function SenseAnnotatedWord(pos, lemma, wnsn, lexsn, word)
+          new(intern(pos), intern(lemma), wnsn, intern(lexsn), intern(word))
+    end
 end
 
 
 struct PosTaggedWord{S<:AbstractString} <: TaggedWord
     pos::S
     word::S
+    function PosTaggedWord(pos, word)
+          new(intern(pos), intern(word))
+    end
 end
 
 const TaggedSentence = Vector{TaggedWord}
