@@ -7,7 +7,7 @@ for (ver, checksum) in [("1.6", "16814254fe194d55a2fcc24858aa76d71de3c49e495bd98
             ("2.0", "93fbae725f0125dedb7369403fda1dace85b2dcd8a523ed80af23e863b18ef2c"),
             ("3.0", "a8000014d6fc864f8bd9d83c62be601151cadd617c6554a39a1ad38b4b3f017b")]
 
-    RegisterDataDep("SemCor $ver",
+    register(DataDep("SemCor $ver",
         """
         Website: http://web.eecs.umich.edu/%7Emihalcea/downloads.html#semcor
         Orignal Author: George A. Miller et al.
@@ -30,5 +30,5 @@ for (ver, checksum) in [("1.6", "16814254fe194d55a2fcc24858aa76d71de3c49e495bd98
             mv.(joinpath.(innerdir, innerfiles), innerfiles)
             rm(innerdir)
         end
-    )
+    ))
 end
