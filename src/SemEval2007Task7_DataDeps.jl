@@ -1,6 +1,6 @@
 using DataDeps
 
-RegisterDataDep("SemEval 2007t7",
+register(DataDep("SemEval 2007t7",
     """
     Website: http://nlp.cs.swarthmore.edu/semeval/tasks/task07/description.shtml
     Data Website: http://nlp.cs.swarthmore.edu/semeval/tasks/task07/data.shtml
@@ -15,4 +15,4 @@ RegisterDataDep("SemEval 2007t7",
     "e0c1dc0d1644c019e28d36cacc837c5fd8c2a87bdafd34a7e71fa95a8b661dc7"
     ;
     post_fetch_method = unpack
-)
+))
