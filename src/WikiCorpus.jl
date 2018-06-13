@@ -25,16 +25,16 @@ nothing
 end
 
 function load(corpus::WikiCorpus)
-    UltimateType = Document{@NestedVector(InternedString, 4), InternedString}
+    UltimateType = Document{@NestedVector(String, 4), String}
 
     Channel(ctype=UltimateType, csize=4) do docs
         for file in readdir(glob"*Text*", corpus.path)
             open(file, enc"latin1") do fh
                 local cur_doc_title
-                cur_doc_content=@NestedVector(InternedString, 4)() # content is for a given section
+                cur_doc_content=@NestedVector(String, 4)() # content is for a given section
                 no_cur_doc = true
                 while(!eof(fh))
-                    cur_section_content=@NestedVector(InternedString, 3)()
+                    cur_section_content=@NestedVector(String, 3)()
                     section_text = strip(readuntil(fh, "\n\n"))
                     for line in split(section_text, "\n")
                         #@show line
@@ -55,15 +55,15 @@ function load(corpus::WikiCorpus)
 
                             # Start a new Doc
                             # this means splitting a section's content
-                            cur_doc_title = InternedString(first(doc_title_match.captures))
-                            cur_content = @NestedVector(InternedString, 4)()
-                            cur_section_content=@NestedVector(InternedString, 3)()
+                            cur_doc_title = String(first(doc_title_match.captures))
+                            cur_content = @NestedVector(String, 4)()
+                            cur_section_content=@NestedVector(String, 3)()
                             no_cur_doc=false
                             continue # Nothing more to do with this line
                         end
 
                         # an actual paragraph (or whatever)
-                        paragraph_of_sents = split.(split(line, Sentences), Words)
+                        paragraph_of_sents = [intern.(tokenize(sent)) for sent in split_sentences(line)]
                         push_nonempty!(cur_section_content, paragraph_of_sents)
                     end # foreach line in section
                     push_nonempty!(cur_doc_content, cur_section_content)
