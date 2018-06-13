@@ -1,6 +1,6 @@
 using DataDeps
 
-RegisterDataDep("English WikiCorpus v1.0",
+register(DataDep("English WikiCorpus v1.0",
     """
     Website: http://www.cs.upc.edu/~nlp/wikicorpus/
     Author: Samual Reese, et al.
@@ -13,4 +13,4 @@ RegisterDataDep("English WikiCorpus v1.0",
     "http://www.cs.upc.edu/~nlp/wikicorpus/raw.en.tgz",
     "cab102a59f7e5bfb4ac832c15210bd22840bbed5508899f2dee04b857830e858";
     post_fetch_method = unpack
-)
+))
