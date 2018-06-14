@@ -1,21 +1,12 @@
-using CorpusLoaders
 using Base.Test
+using CorpusLoaders
 
-testsets = ["semcor.jl",
-            "tokenizers.jl",
-            "similarity.jl",
-            "tags.jl",
-            "util.jl",
-            "semeval2007t7.jl",
-            "wikicorpus.jl"
-           ]
+files = ["types",
+         "wikicorpus",
+         "SemCor"
+        ]
 
-for fn in testsets
-    @testset "$fn" begin
-	    include(fn)
-    end
+
+@testset "$file" for file in files
+    include("test_" * file * ".jl")
 end
-
-
-
-

@@ -1,27 +1,28 @@
 module CorpusLoaders
-
-using LightXML
 using DataDeps
-using Glob
-using BinDeps
+using WordTokenizers
+using MultiResolutionIterators
 using InternedStrings
+using Glob
 using StringEncodings
 
-const AbstractStringVector = AbstractVector{<:AbstractString}
+export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
+export title, sensekey, word
+export load
+
+export WikiCorpus, SemCor
 
 function __init__()
-    print(DataDeps)
-    include("./datadeps.jl")
+
+    include("WikiCorpus_DataDeps.jl")
+    include("SemCor_DataDeps.jl")
+    include("SemEval2007Task7_DataDeps.jl")
 end
 
+include("types.jl")
+include("WikiCorpus.jl")
+include("SemCor.jl")
+include("SemEval2007Task7.jl")
 
-include("util.jl")
 
-include("tokenizers.jl")
-include("tags.jl")
-include("semcor.jl")
-include("semeval2007t7.jl")
-include("similarity.jl")
-include("wikicorpus.jl")
-
-end # module
+end
