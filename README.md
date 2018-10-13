@@ -16,12 +16,12 @@ A collection of various means for loading various different corpora used in NLP.
 
 
 ## Common Structure
-For some corpus which we will say has tyoe `Corpus`,
-it will have a constructior `Corpus(path)` where path is a path to the files describing it.
-That path will default to a predefined data depencency, if not proviced.
-The Data Dependency will be downloaded the first time you call `Corpus()`.
-When the datadep resolves it will givefull bibliograpghic details on the corpus etc.
-For more on that and on configure it, see [DataDeps.jl](https://github.com/oxinabox/DataDeps.jl).
+For some corpus which we will say has type `Corpus`,
+it will have a constructior `Corpus(path)` where `path` argument is a path to the files describing it.
+That path will default to a predefined data dependency, if not provided.
+The data dependency will be downloaded the first time you call `Corpus()`.
+When the datadep resolves it will give full bibliograpghic details on the corpus etc.
+For more on that like configuration details, see [DataDeps.jl](https://github.com/oxinabox/DataDeps.jl).
 
 
 Each corpus has a function `load(::Corpus)`.
