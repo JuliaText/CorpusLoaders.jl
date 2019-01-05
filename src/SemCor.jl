@@ -91,23 +91,8 @@ function parse_semcorfile(filename)
         "</s" =>                 ignore
     ]
 
+    apply_subparsers(filename,subparsers)
 
-	for line in eachline(filename)
-        try
-            found = false
-            for (prefix, subparse) in subparsers
-                if startswith(line, prefix)
-                    found=true
-                    subparse(line)
-                    break
-                end
-            end
-            @assert(found, "No parser for \"$line\"")
-        catch ee
-            warn("Error parsing \"$line\". $ee")
-            rethrow()
-        end
-    end
     return context
 end
 

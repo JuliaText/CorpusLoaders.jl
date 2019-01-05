@@ -21,6 +21,7 @@ function __init__()
 end
 
 include("types.jl")
+include("apply_subparsers.jl")
 include("WikiCorpus.jl")
 include("SemCor.jl")
 include("SemEval2007Task7.jl")
