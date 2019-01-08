@@ -37,3 +37,4 @@ Follow the links below for full docs on the usage of the corpora.
 
  - [WikiCorpus](docs/src/WikiCorpus.md)
  - [SemCor](docs/src/SemCor.md)
+ - [Senseval3](docs/src/Senseval3.md)

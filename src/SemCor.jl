@@ -23,10 +23,11 @@ SemCor() = SemCor(datadep"SemCor 3.0")
 
 MultiResolutionIterators.levelname_map(::Type{SemCor}) = [
     :doc=>1, :contextfile=>1, :context=>1,
-    :para=>2,
-    :sent=>3,
-    :word=>4, :token=>5,
-    :char=>6]
+    :para=>2, :paragraph=>2,
+    :sent=>3, :sentence=>3,
+    :word=>4, :token=>4,
+    :char=>5, :character=>5
+	]
 
 
 
@@ -57,8 +58,6 @@ function parse_semcorfile(filename)
     local para
     paras = @NestedVector(TaggedWord,3)()
     context = Document(intern(basename(filename)), paras)
-
-    ignore(line) = nothing
 
     # structure
     function new_paragraph(line)
@@ -91,23 +90,8 @@ function parse_semcorfile(filename)
         "</s" =>                 ignore
     ]
 
+    apply_subparsers(filename,subparsers)
 
-	for line in eachline(filename)
-        try
-            found = false
-            for (prefix, subparse) in subparsers
-                if startswith(line, prefix)
-                    found=true
-                    subparse(line)
-                    break
-                end
-            end
-            @assert(found, "No parser for \"$line\"")
-        catch ee
-            warn("Error parsing \"$line\". $ee")
-            rethrow()
-        end
-    end
     return context
 end
 
