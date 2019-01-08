@@ -26,3 +26,12 @@ function apply_subparsers(filename, subparsers)
     end
     return nothing
 end
+
+"""
+    ignore(line)
+
+Ignore lines while using subparsers.
+"""
+function ignore(line)
+    nothing
+end

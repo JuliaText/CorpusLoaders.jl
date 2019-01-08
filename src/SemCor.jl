@@ -24,9 +24,9 @@ SemCor() = SemCor(datadep"SemCor 3.0")
 MultiResolutionIterators.levelname_map(::Type{SemCor}) = [
     :doc=>1, :contextfile=>1, :context=>1,
     :para=>2,
-    :sent=>3,
-    :word=>4, :token=>5,
-    :char=>6]
+    :sent=>3, :sentence=>2,
+    :word=>4, :token=>4,
+    :char=>5]
 
 
 
@@ -57,8 +57,6 @@ function parse_semcorfile(filename)
     local para
     paras = @NestedVector(TaggedWord,3)()
     context = Document(intern(basename(filename)), paras)
-
-    ignore(line) = nothing
 
     # structure
     function new_paragraph(line)

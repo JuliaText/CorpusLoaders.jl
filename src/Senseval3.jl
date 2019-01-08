@@ -17,9 +17,9 @@ Senseval3() = Senseval3(datadep"Senseval 3")
 
 MultiResolutionIterators.levelname_map(::Type{Senseval3}) = [
     :doc=>1, :contextfile=>1, :context=>1,
-    :sent=>2,
-    :word=>3, :token=>4,
-    :char=>5]
+    :sent=>2, :sentence=>2,
+    :word=>3, :token=>3,
+    :char=>4]
 
 
 function parse_sense_annotated_word_senseval3(line::AbstractString)
@@ -39,8 +39,6 @@ function parse_senseval3file(filename)
     local sent
     lines = @NestedVector(TaggedWord,2)()
     context = Document(intern(basename(filename)), lines)
-
-    ignore(line) = nothing
 
     # structure
 
