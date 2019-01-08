@@ -3,7 +3,7 @@ using Base.Test
 using Base.Iterators
 using MultiResolutionIterators
 
-@testset "Basic use"
+@testset "Basic use" begin
     path = datadep"Senseval 3"
     wk_gen = load(Senseval3(path))
     docs = collect(wk_gen);
