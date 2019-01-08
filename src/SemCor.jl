@@ -26,7 +26,8 @@ MultiResolutionIterators.levelname_map(::Type{SemCor}) = [
     :para=>2, :paragraph=>2,
     :sent=>3, :sentence=>3,
     :word=>4, :token=>4,
-    :char=>5]
+    :char=>5, :character=>5
+	]
 
 
 

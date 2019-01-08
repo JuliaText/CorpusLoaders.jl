@@ -19,7 +19,8 @@ MultiResolutionIterators.levelname_map(::Type{Senseval3}) = [
     :doc=>1, :contextfile=>1, :context=>1,
     :sent=>2, :sentence=>2,
     :word=>3, :token=>3,
-    :char=>4]
+    :char=>4, :character=>5
+    ]
 
 
 function parse_sense_annotated_word_senseval3(line::AbstractString)
