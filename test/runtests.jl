@@ -3,7 +3,7 @@ using CorpusLoaders
 
 files = ["types",
          "wikicorpus",
-         "SemCor"
+         "SemCor",
          "Senseval3"
         ]
 
