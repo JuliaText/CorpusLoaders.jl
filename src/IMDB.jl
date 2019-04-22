@@ -5,19 +5,18 @@ end
 function IMDB(path, category)
     paths = Dict{String, Vector{String}}()
     folder, subfolder = split(category, "_")
-    paths = joinpath.(joinpath(datadep"IMDB movie reviews dataset", "aclImdb\\$folder\\$subfolder"),
-    readdir(joinpath(datadep"IMDB movie reviews dataset", "aclImdb\\$folder\\$subfolder")))
+    basepath = joinpath(datadep"IMDB movie reviews dataset", "aclImdb\\$folder\\$subfolder")
+    paths = joinpath.(basepath, readdir(basepath))
     IMDB(paths)
 end
 
 IMDB(category="train_pos") = IMDB(datadep"IMDB movie reviews dataset", category)
 
 MultiResolutionIterators.levelname_map(::Type{IMDB}) = [
-:Document => 1,
-:sentences => 2,
-:words => 3, :tokens => 3,
-:characters => 4
-]
+    :document => 1,
+    :sentences => 2,
+    :words => 3, :tokens => 3,
+    :characters => 4]
 
 function load(dataset::IMDB)
     Channel(ctype=@NestedVector(String, 2), csize=4) do docs
