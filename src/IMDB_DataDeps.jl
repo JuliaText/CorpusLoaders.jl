@@ -18,7 +18,5 @@ register(DataDep(
     http://www.aclweb.org/anthology/P11-1015
     """,
     "http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz",
-    post_fetch_method = fn -> begin
-    unpack(fn)
-    end
+    post_fetch_method = unpack
 ))

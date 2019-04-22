@@ -2,11 +2,11 @@
 # The inner iterator must be in the `content` field
 
 abstract type AnnotatedIterator{T} end
-function Base.iteratoreltype(::Type{<:AnnotatedIterator{T}}) where T
-     Base.iteratoreltype(T)
+function Base.IteratorEltype(::Type{<:AnnotatedIterator{T}}) where T
+     Base.IteratorEltype(T)
  end
-function Base.iteratorsize(::Type{AnnotatedIterator{T}}) where T
-    Base.iteratorsize(T)
+function Base.IteratorSize(::Type{AnnotatedIterator{T}}) where T
+    Base.IteratorSize(T)
 end
 function Base.IndexStyle(::Type{AnnotatedIterator{T}}) where T
     Base.IndexStyle(T)
