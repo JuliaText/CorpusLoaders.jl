@@ -10,14 +10,15 @@ export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
 export title, sensekey, word
 export load
 
-export WikiCorpus, SemCor, Senseval3
+export WikiCorpus, SemCor, Senseval3, IMDB, TwitterDataset
 
 function __init__()
-
     include("WikiCorpus_DataDeps.jl")
     include("SemCor_DataDeps.jl")
     include("SemEval2007Task7_DataDeps.jl")
     include("Senseval3_DataDeps.jl")
+    include("IMDB_DataDeps.jl")
+    include("Twitter_DataDeps.jl")
 end
 
 include("types.jl")
@@ -26,5 +27,7 @@ include("WikiCorpus.jl")
 include("SemCor.jl")
 include("SemEval2007Task7.jl")
 include("Senseval3.jl")
+include("IMDB.jl")
+include("TwitterDataset.jl")
 
 end
