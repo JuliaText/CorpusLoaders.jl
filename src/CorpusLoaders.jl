@@ -28,6 +28,6 @@ include("SemCor.jl")
 include("SemEval2007Task7.jl")
 include("Senseval3.jl")
 include("IMDB.jl")
-include("TwitterDataset.jl")
+include("Twitter.jl")
 
 end

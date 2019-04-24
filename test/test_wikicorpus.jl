@@ -1,5 +1,5 @@
 using CorpusLoaders
-using Base.Test
+using Test
 using Base.Iterators
 using MultiResolutionIterators
 using InternedStrings
