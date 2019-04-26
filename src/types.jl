@@ -16,7 +16,7 @@ Base.iterate(aiter::AnnotatedIterator) = Base.iterate(aiter.content)
 Base.iterate(aiter::AnnotatedIterator, state) = Base.iterate(aiter.content, state)
 
 Base.length(aiter::AnnotatedIterator) = length(aiter.content)
-Base.endof(aiter::AnnotatedIterator) = endof(aiter.content)
+Base.lastindex(aiter::AnnotatedIterator) = lastindex(aiter.content)
 
 Base.getindex(aiter::AnnotatedIterator, args...) = getindex(aiter.content, args...)
 Base.setindex!(aiter::AnnotatedIterator, args...) = setindex!(aiter.content, args...)
