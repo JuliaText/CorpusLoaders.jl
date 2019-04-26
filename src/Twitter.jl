@@ -1,5 +1,5 @@
-using CSV
 using DataFrames
+using CSV
 
 struct Twitter{S}
     data::Array{S, 1}

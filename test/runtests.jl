@@ -1,5 +1,5 @@
-using Test
 using CorpusLoaders
+using Test
 
 files = ["types",
          "wikicorpus",

@@ -10,7 +10,7 @@ using InternedStrings
 
 
     @test typeof(docs) ==
-        Vector{Document{CorpusLoaders.@NestedVector(String, 4), String}}
+        Vector{CorpusLoaders.Document{@NestedVector(String, 4), String}}
 #    @test all(isa.(words, AbstractString))
 #    @test "a" ∈ words
 #    @test "the" ∈ words
@@ -25,13 +25,13 @@ using InternedStrings
     #Make sure we're not catching anything we shouldn't
     @test "ENDOFARTICLE" ∉ vocab
     @test "ENDOFARTICLE." ∉ vocab
-    @test "<doc" ∉ map(x->x[1:min(end,4)], vocab)
+    @test "<doc" ∉ map(x->x[1:min(end,4)], collect(vocab))
 
 
 
 
     docs_of_words = full_consolidate(flatten_levels(docs, (!lvls)(WikiCorpus, :doc, :word)))
-    @test typeof(docs_of_words) == Vector{Document{Vector{String}, String}}
+    @test typeof(docs_of_words) == Vector{CorpusLoaders.Document{Vector{String}, String}}
     @test length(docs_of_words) == length(docs)
     @test sum(length.(docs_of_words)) == length(words)
 end

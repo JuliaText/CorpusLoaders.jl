@@ -6,7 +6,7 @@ using MultiResolutionIterators
 @testset "Basic use" begin
     path = datadep"Senseval 3"
     wk_gen = load(Senseval3(path))
-    docs = collect(wk_gen);
+    docs = collect(take(wk_gen, 10));
 
     words = consolidate(flatten_levels(docs, (!lvls)(Senseval3, :word)))
     @test length(words) > length(docs)

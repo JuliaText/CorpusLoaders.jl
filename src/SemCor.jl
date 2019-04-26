@@ -80,7 +80,7 @@ function parse_semcorfile(filename)
     subparsers = [
         "<wf cmd=tag"=>          get_tagged,
         "<wf cmd=ignore"=>       get_tagged,
-        "<wf cmd=done"=>         line -> contains(line,"lemma=") ? get_sense_annotated(line) : get_tagged(line),
+        "<wf cmd=done"=>         line -> occursin("lemma=", line) ? get_sense_annotated(line) : get_tagged(line),
         "<punc>"=>               get_punc,
         "<context"=>             ignore,
         "</context" =>           ignore,
