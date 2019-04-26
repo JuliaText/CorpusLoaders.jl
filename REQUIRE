@@ -6,3 +6,5 @@ InternedStrings
 StringEncodings
 WordTokenizers
 MultiResolutionIterators
+CSV
+DataFrames
