@@ -13,14 +13,13 @@ export load
 
 export WikiCorpus, SemCor, Senseval3, IMDB, Twitter
 
-function __init__()
     include("WikiCorpus_DataDeps.jl")
     include("SemCor_DataDeps.jl")
     include("SemEval2007Task7_DataDeps.jl")
     include("Senseval3_DataDeps.jl")
     include("IMDB_DataDeps.jl")
     include("Twitter_DataDeps.jl")
-end
+
 
 include("types.jl")
 include("apply_subparsers.jl")
