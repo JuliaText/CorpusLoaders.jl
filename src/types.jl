@@ -12,9 +12,8 @@ function Base.IndexStyle(::Type{AnnotatedIterator{T}}) where T
     Base.IndexStyle(T)
 end
 
-Base.start(aiter::AnnotatedIterator)=Base.start(aiter.content)
-Base.next(aiter::AnnotatedIterator, state)=Base.next(aiter.content, state)
-Base.done(aiter::AnnotatedIterator, state)=Base.done(aiter.content, state)
+Base.iterate(aiter::AnnotatedIterator) = Base.iterate(aiter.content)
+Base.iterate(aiter::AnnotatedIterator, state) = Base.iterate(aiter.content, state)
 
 Base.length(aiter::AnnotatedIterator) = length(aiter.content)
 Base.endof(aiter::AnnotatedIterator) = endof(aiter.content)
