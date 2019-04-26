@@ -13,7 +13,7 @@ end
 IMDB(category="train_pos") = IMDB(datadep"IMDB movie reviews dataset", category)
 
 MultiResolutionIterators.levelname_map(::Type{IMDB}) = [
-    :document => 1,
+    :documents => 1,
     :sentences => 2,
     :words => 3, :tokens => 3,
     :characters => 4]
