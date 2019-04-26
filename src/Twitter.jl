@@ -2,7 +2,7 @@ using DataFrames
 using CSV
 
 struct Twitter{S}
-    data::Array{S}
+    data::Array{S, 1}
 end
 
 function Twitter(category="train_pos")
@@ -15,16 +15,16 @@ function Twitter(category="train_pos")
 end
 
 MultiResolutionIterators.levelname_map(::Type{Twitter}) = [
-    :document => 1, :tweet => 1,
+    :documents => 1, :tweets => 1,
     :sentences => 2,
     :words => 3, :tokens => 3,
-    :charaters => 4
+    :characters => 4
     ]
 
 function load(dataset::Twitter)
     Channel(ctype=@NestedVector(String, 2), csize=4) do docs
         for tweet in dataset.data
-            para = [intern.(tokenize(sent)) for sent in split_sentences(tweet)]
+            para = [intern.(tokenize(sent)) for sent in split_sentences(tweet) if length(sent) != 0]
             put!(docs, para)
         end
     end
