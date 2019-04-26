@@ -7,4 +7,3 @@ StringEncodings
 WordTokenizers
 MultiResolutionIterators
 CSV
-DataFrames

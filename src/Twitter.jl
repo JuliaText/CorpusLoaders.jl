@@ -1,6 +1,3 @@
-using DataFrames
-using CSV
-
 struct Twitter{S}
     data::Array{S, 1}
 end
@@ -11,7 +8,7 @@ function Twitter(category="train_pos")
     file, polarity = fileMap[split(category, "_")[1]], polarityMap[split(category, "_")[2]]
     path = joinpath(datadep"Twitter Sentiment Dataset", "$file")
     dataframe = CSV.read(path, header=0)
-    Twitter(dataframe.Column6[dataframe.Column1 .== polarity])
+    return Twitter(dataframe.Column6[dataframe.Column1 .== polarity])
 end
 
 MultiResolutionIterators.levelname_map(::Type{Twitter}) = [

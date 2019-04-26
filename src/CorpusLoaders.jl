@@ -5,6 +5,7 @@ using MultiResolutionIterators
 using InternedStrings
 using Glob
 using StringEncodings
+using CSV
 
 export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
 export title, sensekey, word
