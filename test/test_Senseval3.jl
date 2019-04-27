@@ -2,6 +2,7 @@ using CorpusLoaders
 using Test
 using Base.Iterators
 using MultiResolutionIterators
+using DataDeps
 
 @testset "Basic use" begin
     path = datadep"Senseval 3"

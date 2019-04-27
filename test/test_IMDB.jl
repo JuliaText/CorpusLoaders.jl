@@ -2,6 +2,7 @@ using CorpusLoaders
 using Test
 using Base.Iterators
 using MultiResolutionIterators
+using DataDeps
 
 @testset "basic use $category" for category in ["train_pos", "train_neg", "test_pos", "test_neg"]
     imdb_gen = load(IMDB(category))
