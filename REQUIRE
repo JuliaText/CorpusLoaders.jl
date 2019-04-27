@@ -7,3 +7,4 @@ StringEncodings
 WordTokenizers
 MultiResolutionIterators
 CSV
+Parsers
