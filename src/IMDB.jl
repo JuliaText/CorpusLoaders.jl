@@ -5,7 +5,7 @@ end
 function IMDB(path, category)
     paths = Dict{String, Vector{String}}()
     folder, subfolder = split(category, "_")
-    basepath = joinpath(datadep"IMDB movie reviews dataset", "aclImdb\\$folder\\$subfolder")
+    basepath = joinpath(datadep"IMDB movie reviews dataset", "aclImdb", "$folder", "$subfolder")
     paths = joinpath.(basepath, readdir(basepath))
     IMDB(paths)
 end
