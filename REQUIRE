@@ -6,5 +6,4 @@ InternedStrings
 StringEncodings
 WordTokenizers
 MultiResolutionIterators
-CSV
-Parsers
+CSV 0.4.3
