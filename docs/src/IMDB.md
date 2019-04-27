@@ -5,11 +5,11 @@ IMDB movie reviews dataset a standard collection for Binary Sentiment Analysis t
 Structure of the reviews contain different levels:
 documents, sentences, words/tokens, characters
 
-Whole data is divided into 5 parts which can be accessed by providing following keywords:
-`train_pos`     : positive polarity sentiment train set examples (default)
-`train_neg`     : negative polarity sentiment train set examples
-`test_pos`      : positive polarity sentiment test set examples
-`test_neg`      : negative polarity sentiment test set examples
+Whole data is divided into 5 parts which can be accessed by providing following keywords: <br>
+`train_pos`     : positive polarity sentiment train set examples (default) <br>
+`train_neg`     : negative polarity sentiment train set examples <br>
+`test_pos`      : positive polarity sentiment test set examples <br>
+`test_neg`      : negative polarity sentiment test set examples <br>
 `train_unsup`   : unlabeled examples
 
 To get rid of unwanted levels, `flatten_levels` function can be used.

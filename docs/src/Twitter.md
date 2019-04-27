@@ -6,11 +6,11 @@ It is large dataset for the Sentiment Analysis task. Every tweets falls in eithe
 Structure of dataset:
 documents/tweets, sentences, words, characters
 
-This whole dataset is divided into four categories which can accessed by giving corresponding keywords:
-`train_pos`   :   positive polarity sentiment train set examples (default)
-`train_neg`   :   negative polarity sentiment train set examples
-`test_pos`    :   positive polarity sentiment test set examples
-`test_neg`    :   negative polarity sentiment test set examples
+This whole dataset is divided into four categories which can accessed by giving corresponding keywords: <br>
+`train_pos`   :   positive polarity sentiment train set examples (default) <br>
+`train_neg`   :   negative polarity sentiment train set examples <br>
+`test_pos`    :   positive polarity sentiment test set examples <br>
+`test_neg`    :   negative polarity sentiment test set examples <br>
 
 Example:
 
