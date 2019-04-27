@@ -6,7 +6,7 @@ using InternedStrings
 
 @testset "basic use" begin
     wk_gen = load(WikiCorpus())
-    docs = collect(take(wk_gen, 10));
+    docs = collect(take(wk_gen, 5));
 
 
     @test typeof(docs) ==
