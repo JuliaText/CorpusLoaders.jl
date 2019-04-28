@@ -12,7 +12,7 @@ Whole data is divided into 5 parts which can be accessed by providing following 
 `test_neg`      : negative polarity sentiment test set examples <br>
 `train_unsup`   : unlabeled examples
 
-To get rid of unwanted levels, `flatten_levels` function can be used.
+To get rid of unwanted levels, `flatten_levels` function from [MultiResolutionIterators.jl](https://github.com/oxinabox/MultiResolutionIterators.jl) can be used.
 
 
 Example:

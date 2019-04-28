@@ -12,6 +12,8 @@ This whole dataset is divided into four categories which can accessed by giving 
 `test_pos`    :   positive polarity sentiment test set examples <br>
 `test_neg`    :   negative polarity sentiment test set examples <br>
 
+To get rid of unwanted levels, `flatten_levels` function from [MultiResolutionIterators.jl](https://github.com/oxinabox/MultiResolutionIterators.jl) can be used.
+
 Example:
 
 #Using "test_pos" keyword for getting positive polarity sentiment examples
