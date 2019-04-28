@@ -1,6 +1,8 @@
 using CorpusLoaders
 using Test
 
+ENV["DATADEPS_ALWAYS_ACCEPT"] = "true";
+
 files = ["types",
          "wikicorpus",
          "SemCor",
