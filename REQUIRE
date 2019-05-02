@@ -7,4 +7,3 @@ StringEncodings
 WordTokenizers
 MultiResolutionIterators
 CSV 0.4.3
-DelimitedFiles
