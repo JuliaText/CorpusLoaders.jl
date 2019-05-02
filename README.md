@@ -38,5 +38,6 @@ Follow the links below for full docs on the usage of the corpora.
  - [WikiCorpus](docs/src/WikiCorpus.md)
  - [SemCor](docs/src/SemCor.md)
  - [Senseval3](docs/src/Senseval3.md)
- - [IMDB](docs/src/IMDB.md)
- - [Twitter](docs/src/Twitter.md)
+ - [IMDB movie reviews](docs/src/IMDB.md)
+ - [Twitter sentiment dataset](docs/src/Twitter.md)
+ - [Stanford Sentiment Treebank](docs/src/SST.md)

@@ -15,5 +15,6 @@ register(DataDep(
     https://cs.stanford.edu/people/alecmgo/papers/TwitterDistantSupervision09.pdf
     """,
     "https://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip",
+    "004a3772c8a7ff9bbfeb875880f47f0679d93fc63e5cf9cff72d54a8a6162e57",
     post_fetch_method=unpack
 ))

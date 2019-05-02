@@ -8,7 +8,8 @@ files = ["types",
          "SemCor",
          "Senseval3",
          "IMDB",
-         "Twitter"
+         "Twitter",
+         "SST"
         ]
 
 @testset "$file" for file in files
