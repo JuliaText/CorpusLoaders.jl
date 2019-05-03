@@ -1,4 +1,4 @@
-###SST
+###StanfordSentimentTreebank
 This contains sentiment part of famous dataset Stanford Sentiment Treebank V1.0 for [Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank](https://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf) paper by Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Christopher Manning, Andrew Ng and Christopher Potts.
 The dataset gives the phases with their sentiment labels between 0 to 1. This dataset can be used as binary or fine-grained sentiment classification problems.
 
@@ -10,7 +10,7 @@ To get desired levels, `flatten_levels` function from [MultiResolutionIterators.
 ##Usage:
 
 ```
-julia> dataset = load(SST())
+julia> dataset = load(StanfordSentimentTreebank())
 Channel{Array{Any,1}}(sz_max:4,sz_curr:4)
 
 julia> using Base.Iterators
@@ -75,7 +75,7 @@ julia> values = data[:, 2]          #Here "data" is a 2-D Array
 To get an `Array` of all sentences from all the `phrases` (since phrases can contain more than one sentence):
 
 ```
-julia> sentences = flatten_levels(phrases, (lvls)(SST, :documents))|>full_consolidate
+julia> sentences = flatten_levels(phrases, (lvls)(StanfordSentimentTreebank, :documents))|>full_consolidate
 5-element Array{Array{String,1},1}:
  ["'"]
 
@@ -91,7 +91,7 @@ julia> sentences = flatten_levels(phrases, (lvls)(SST, :documents))|>full_consol
 To get `Array` of all the from `phrases`:
 
 ```
-julia> words = flatten_levels(phrases, (!lvls)(SST, :words))|>full_consolidate
+julia> words = flatten_levels(phrases, (!lvls)(StanfordSentimentTreebank, :words))|>full_consolidate
 31-element Array{String,1}:
  "'"
  "'"

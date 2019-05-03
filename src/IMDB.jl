@@ -1,5 +1,5 @@
 struct IMDB{S}
-    filepaths::Vector{S}
+    filepaths::Vector{S}    #paths to all the files of specified category
 end
 
 function IMDB(path, category)
@@ -20,12 +20,12 @@ MultiResolutionIterators.levelname_map(::Type{IMDB}) = [
 
 function load(dataset::IMDB)
     Channel(ctype=@NestedVector(String, 2), csize=4) do docs
-        for path in dataset.filepaths
+        for path in dataset.filepaths   #extract data from the files in directory and put into channel
             open(path) do fileio
                 cur_text = read(fileio, String)
-                para_of_sents = [intern.(tokenize(sent)) for sent in split_sentences(cur_text)]
-                put!(docs, para_of_sents)
-            end
-        end
-    end
+                sents = [intern.(tokenize(sent)) for sent in split_sentences(cur_text)]
+                put!(docs, sents)
+            end #open
+        end #for
+    end #channel
 end

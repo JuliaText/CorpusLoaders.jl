@@ -9,7 +9,7 @@ files = ["types",
          "Senseval3",
          "IMDB",
          "Twitter",
-         "SST"
+         "StanfordSentimentTreebank"
         ]
 
 @testset "$file" for file in files

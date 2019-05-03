@@ -1,5 +1,5 @@
 struct Twitter{S}
-    data::Array{S, 1}
+    data::Array{S, 1}   #array of all tweets with specified category
 end
 
 function Twitter(category="train_pos")
@@ -21,8 +21,8 @@ MultiResolutionIterators.levelname_map(::Type{Twitter}) = [
 function load(dataset::Twitter)
     Channel(ctype=@NestedVector(String, 2), csize=4) do docs
         for tweet in dataset.data
-            para = [intern.(tokenize(sent)) for sent in split_sentences(tweet) if length(sent) != 0]
-            put!(docs, para)
+            sents = [intern.(tokenize(sent)) for sent in split_sentences(tweet) if length(sent) != 0]
+            put!(docs, sents)
         end
     end
 end

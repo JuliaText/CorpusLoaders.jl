@@ -1,7 +1,7 @@
 using DataDeps
 
 register(DataDep(
-    "SST",
+    "Stanford Sentiment Treebank",
     """
     Stanford Sentiment Treebank V1.0
 
@@ -18,7 +18,7 @@ register(DataDep(
     """,
     "http://nlp.stanford.edu/~socherr/stanfordSentimentTreebank.zip",
     "3f5209483b46bbf129cacbbbe6ae02fe780407034f61cf6342b7833257c3f1db",
-    post_fetch_method = fn -> begin
+    post_fetch_method =function (fn)
         unpack(fn)
         dir = "stanfordSentimentTreebank"
         files = readdir(dir)
