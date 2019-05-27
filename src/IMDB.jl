@@ -2,15 +2,13 @@ struct IMDB{S}
     filepaths::Vector{S}    #paths to all the files of specified category
 end
 
-function IMDB(path, category)
+function IMDB(category = "train_pos")
     paths = Dict{String, Vector{String}}()
     folder, subfolder = split(category, "_")
     basepath = joinpath(datadep"IMDB movie reviews dataset", "aclImdb", "$folder", "$subfolder")
     paths = joinpath.(basepath, readdir(basepath))
     IMDB(paths)
 end
-
-IMDB(category="train_pos") = IMDB(datadep"IMDB movie reviews dataset", category)
 
 MultiResolutionIterators.levelname_map(::Type{IMDB}) = [
     :documents => 1,
