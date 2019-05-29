@@ -24,5 +24,20 @@ register(DataDep(
         files = readdir(dir)
         mv.(joinpath.(dir, files), files)
         rm(dir), rm("__MACOSX", recursive=true)
+
+        fdataset = open("sa_dataset.txt", "w")
+        fdict = open("dictionary.txt", "r")
+        fsenti = open("sentiment_labels.txt", "r")
+        dict = split.(split(read(fdict, String), '\n'), '|')[1:end-1]
+        dict = permutedims(reshape(hcat(dict...), (length( dict[1]), length(dict))))
+        sentiments = split.(split(read(fsenti, String), '\n'), '|')[2:end-1]
+        sentiments = permutedims(reshape(hcat(sentiments...), (length(sentiments[1]), length(sentiments))))
+        close(fdict)
+        close(fsenti)
+        for id=1:size(dict)[1]
+            line = join([dict[id, 1], sentiments[parse(Int, dict[id, 2])+1, 2]], '|')
+            write(fdataset, line, "\n")
+        end
+        close(fdataset)
     end
 ))

@@ -6,7 +6,6 @@ using InternedStrings
 using Glob
 using StringEncodings
 using CSV
-using DelimitedFiles
 
 export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
 export title, sensekey, word
