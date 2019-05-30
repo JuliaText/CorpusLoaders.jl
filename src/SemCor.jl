@@ -22,7 +22,7 @@ end
 SemCor() = SemCor(datadep"SemCor 3.0")
 
 MultiResolutionIterators.levelname_map(::Type{SemCor}) = [
-    :doc=>1, :contextfile=>1, :context=>1,
+    :doc=>1, :contextfile=>1, :context=>1, :document=>1,
     :para=>2, :paragraph=>2,
     :sent=>3, :sentence=>3,
     :word=>4, :token=>4,
