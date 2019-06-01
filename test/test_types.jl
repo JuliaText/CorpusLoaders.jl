@@ -1,4 +1,4 @@
-using Base.Test
+using Test
 using CorpusLoaders
 using CorpusLoaders: @NestedVector
 using MultiResolutionIterators

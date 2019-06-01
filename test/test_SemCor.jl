@@ -1,5 +1,5 @@
 using CorpusLoaders
-using Base.Test
+using Test
 using Base.Iterators
 using MultiResolutionIterators
 
@@ -11,7 +11,7 @@ using MultiResolutionIterators
     words = consolidate(flatten_levels(docs, (!lvls)(SemCor, :word)))
     @test length(words) > length(docs)
     @test length(words) > sum(length.(docs))
-    @test typeof(words) == Vector{CorpusLoaders.TaggedWord}
+    @test typeof(words) == Vector{TaggedWord}
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}
