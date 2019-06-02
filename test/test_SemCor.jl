@@ -2,7 +2,7 @@ using CorpusLoaders
 using Test
 using Base.Iterators
 using MultiResolutionIterators
-
+using DataDeps
 
 @testset "basic use" for path in [datadep"SemCor 1.6", datadep"SemCor 1.7", datadep"SemCor 1.7.1", datadep"SemCor 2.0", datadep"SemCor 3.0", datadep"SemCor 3.0/brownv"]
     wk_gen = load(SemCor(path))

@@ -12,12 +12,13 @@ export load
 
 export WikiCorpus, SemCor, Senseval3
 
-function __init__()
+file_path = dirname(@__FILE__)
 
-    include("WikiCorpus_DataDeps.jl")
-    include("SemCor_DataDeps.jl")
-    include("SemEval2007Task7_DataDeps.jl")
-    include("Senseval3_DataDeps.jl")
+function __init__()
+    include(joinpath(file_path, "WikiCorpus_DataDeps.jl"))
+    include(joinpath(file_path, "SemCor_DataDeps.jl"))
+    include(joinpath(file_path, "SemEval2007Task7_DataDeps.jl"))
+    include(joinpath(file_path, "Senseval3_DataDeps.jl"))
 end
 
 include("types.jl")
