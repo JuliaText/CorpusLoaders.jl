@@ -1,8 +1,8 @@
 using CorpusLoaders
-using Base.Test
+using Test
 using Base.Iterators
 using MultiResolutionIterators
-
+using DataDeps
 
 @testset "basic use" for path in [datadep"SemCor 1.6", datadep"SemCor 1.7", datadep"SemCor 1.7.1", datadep"SemCor 2.0", datadep"SemCor 3.0", datadep"SemCor 3.0/brownv"]
     wk_gen = load(SemCor(path))
@@ -11,7 +11,7 @@ using MultiResolutionIterators
     words = consolidate(flatten_levels(docs, (!lvls)(SemCor, :word)))
     @test length(words) > length(docs)
     @test length(words) > sum(length.(docs))
-    @test typeof(words) == Vector{CorpusLoaders.TaggedWord}
+    @test typeof(words) == Vector{TaggedWord}
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}

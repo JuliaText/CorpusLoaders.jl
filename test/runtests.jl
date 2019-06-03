@@ -1,10 +1,10 @@
-using Base.Test
+using Test
 using CorpusLoaders
 
 files = ["types",
-         "wikicorpus",
          "SemCor",
-         "Senseval3"
+         "Senseval3",
+         "wikicorpus"
         ]
 
 
