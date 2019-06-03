@@ -25,7 +25,7 @@ using InternedStrings
     #Make sure we're not catching anything we shouldn't
     @test "ENDOFARTICLE" ∉ vocab
     @test "ENDOFARTICLE." ∉ vocab
-    # @test "<doc" ∉ map(x->x[1:min(end,4)], vocab)
+    @test "<doc" ∉ Set([x[1:min(end, 4)] for x in vocab])
 
 
     docs_of_words = full_consolidate(flatten_levels(docs, (!lvls)(WikiCorpus, :doc, :word)))
