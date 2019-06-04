@@ -115,11 +115,11 @@ julia> dataset[1]
 
 Accessing the tag could simply be done on the word level using
 
-    named_entity(tagged_word)
+    CorpusLoaders.named_entity(tagged_word)
 
 ```julia
 julia> for tagged_word in dataset[1]
-           ner_tag = named_entity(tagged_word)
+           ner_tag = CorpusLoaders.named_entity(tagged_word)
            w = word(tagged_word)
            println("$w => $ner_tag")
        end

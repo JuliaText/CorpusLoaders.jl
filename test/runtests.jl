@@ -4,6 +4,7 @@ using CorpusLoaders
 files = ["types",
          "SemCor",
          "Senseval3",
+         "CoNLL",
          "wikicorpus"
         ]
 
