@@ -2,22 +2,21 @@
 # The inner iterator must be in the `content` field
 
 abstract type AnnotatedIterator{T} end
-function Base.iteratoreltype(::Type{<:AnnotatedIterator{T}}) where T
-     Base.iteratoreltype(T)
+function Base.IteratorEltype(::Type{<:AnnotatedIterator{T}}) where T
+     Base.IteratorEltype(T)
  end
-function Base.iteratorsize(::Type{AnnotatedIterator{T}}) where T
-    Base.iteratorsize(T)
+function Base.IteratorSize(::Type{AnnotatedIterator{T}}) where T
+    Base.IteratorSize(T)
 end
 function Base.IndexStyle(::Type{AnnotatedIterator{T}}) where T
     Base.IndexStyle(T)
 end
 
-Base.start(aiter::AnnotatedIterator)=Base.start(aiter.content)
-Base.next(aiter::AnnotatedIterator, state)=Base.next(aiter.content, state)
-Base.done(aiter::AnnotatedIterator, state)=Base.done(aiter.content, state)
+Base.iterate(aiter::AnnotatedIterator) = Base.iterate(aiter.content)
+Base.iterate(aiter::AnnotatedIterator, state) = Base.iterate(aiter.content, state)
 
 Base.length(aiter::AnnotatedIterator) = length(aiter.content)
-Base.endof(aiter::AnnotatedIterator) = endof(aiter.content)
+Base.lastindex(aiter::AnnotatedIterator) = lastindex(aiter.content)
 
 Base.getindex(aiter::AnnotatedIterator, args...) = getindex(aiter.content, args...)
 Base.setindex!(aiter::AnnotatedIterator, args...) = setindex!(aiter.content, args...)

@@ -20,7 +20,7 @@ function apply_subparsers(filename, subparsers)
             end
             @assert(found, "No parser for \"$line\"")
         catch ee
-            warn("Error parsing \"$line\". $ee")
+            @warn "Error parsing \"$line\". $ee"
             rethrow()
         end
     end

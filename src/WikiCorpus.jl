@@ -4,12 +4,13 @@ end
 WikiCorpus() = WikiCorpus(datadep"English WikiCorpus v1.0")
 
 MultiResolutionIterators.levelname_map(::Type{WikiCorpus}) = [
-    :doc=>1,
+    :doc=>1, :document=>1,
     :section=>2,
-    :para=>3, :line=>3,
-    :sent=>4,
+    :para=>3, :line=>3, :paragraph=>3,
+    :sent=>4, :sentence=>4,
     :word=>5, :token=>5,
-    :char=>6]
+    :char=>6, :character=>6
+    ]
 
 """
     push_nonempty!(xss, xs)

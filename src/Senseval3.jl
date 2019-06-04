@@ -16,10 +16,10 @@ end
 Senseval3() = Senseval3(datadep"Senseval 3")
 
 MultiResolutionIterators.levelname_map(::Type{Senseval3}) = [
-    :doc=>1, :contextfile=>1, :context=>1,
+    :doc=>1, :contextfile=>1, :context=>1, :document=>1,
     :sent=>2, :sentence=>2,
     :word=>3, :token=>3,
-    :char=>4, :character=>5
+    :char=>4, :character=>4
     ]
 
 
@@ -58,7 +58,7 @@ function parse_senseval3file(filename)
     subparsers = [
         "<wf cmd=tag"=>          get_tagged,
         "<wf cmd=ignore"=>       get_tagged,
-        "<wf cmd=done"=>         line -> contains(line,"lemma=") ? get_sense_annotated(line) : get_tagged(line),
+        "<wf cmd=done"=>         line -> occursin("lemma=", line) ? get_sense_annotated(line) : get_tagged(line),
         "<punc>"=>               get_punc,
         "<context"=>             ignore,
         "</context" =>           ignore,

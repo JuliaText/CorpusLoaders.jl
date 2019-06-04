@@ -4,9 +4,9 @@ os:
   - linux
 #  - osx
 env:
-  - DATADEPS_ALWAY_ACCEPT=true
+  - DATADEPS_ALWAYS_ACCEPT=true
 julia:
-  - 0.6
+  - 1.0
   - nightly
 matrix:
   allow_failures:

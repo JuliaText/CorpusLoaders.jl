@@ -22,7 +22,7 @@ end
 SemCor() = SemCor(datadep"SemCor 3.0")
 
 MultiResolutionIterators.levelname_map(::Type{SemCor}) = [
-    :doc=>1, :contextfile=>1, :context=>1,
+    :doc=>1, :contextfile=>1, :context=>1, :document=>1,
     :para=>2, :paragraph=>2,
     :sent=>3, :sentence=>3,
     :word=>4, :token=>4,
@@ -80,7 +80,7 @@ function parse_semcorfile(filename)
     subparsers = [
         "<wf cmd=tag"=>          get_tagged,
         "<wf cmd=ignore"=>       get_tagged,
-        "<wf cmd=done"=>         line -> contains(line,"lemma=") ? get_sense_annotated(line) : get_tagged(line),
+        "<wf cmd=done"=>         line -> occursin("lemma=", line) ? get_sense_annotated(line) : get_tagged(line),
         "<punc>"=>               get_punc,
         "<context"=>             ignore,
         "</context" =>           ignore,
