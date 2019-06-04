@@ -18,6 +18,9 @@ function __init__()
     include(joinpath(@__DIR__, "SemCor_DataDeps.jl"))
     include(joinpath(@__DIR__, "SemEval2007Task7_DataDeps.jl"))
     include(joinpath(@__DIR__, "Senseval3_DataDeps.jl"))
+    include(joinpath(@__DIR__, "IMDB_DataDeps.jl"))
+    include(joinpath(@__DIR__, "Twitter_DataDeps.jl"))
+    include(joinpath(@__DIR__, "StanfordSentimentTreebank_DataDeps.jl"))
 end
 
 include("types.jl")
