@@ -39,6 +39,12 @@ MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [
     :char=>4, :character=>4
     ]
 
+function parse_conll2003_tagged_word(line::AbstractString)
+	tokens_tags = split(line)
+	length(tokens_tags) != 4 && throw("Error parsing line: \"$line\". Invalid Format.")
+	return CoNLL2003TaggedWord(tokens_tags[4], tokens_tags[1])
+end
+
 function parse_conllfile(filename)
     local sent
     local doc
@@ -59,27 +65,24 @@ function parse_conllfile(filename)
     # words
     get_tagged(line) = push!(sent, parse_conll2003_tagged_word(line))
 
-    new_document()
-	new_sentence()
-
     # parse
     for line in eachline(filename)
         if length(line) == 0
             new_sentence()
-        elseif startswith(strip(line), "-DOCSTART-") && length(doc) != 0
-            isempty(doc[end]) && pop!(doc, lastindex(doc))
+        elseif startswith(strip(line), "-DOCSTART-")
+            length(docs) > 0 && isempty(doc[end]) && deleteat!(doc, lastindex(doc))
             new_document()
         else
             get_tagged(line)
         end
     end
-    isempty(doc[end]) && pop!(doc, lastindex(doc))
+    isempty(doc[end]) && deleteat!(doc, lastindex(doc))
 
     return context
 end
 
 function load(corpus::CoNLL, file="train")
-    file == "train" && return parse_conll(corpus.trainpath)
-    file == "test" && return (corpus.testpath)
-    file == "dev" && return (corpus.devpath)
+    file == "train" && return parse_conllfile(corpus.trainpath)
+    file == "test" && return parse_conllfile(corpus.testpath)
+    file == "dev" && return parse_conllfile(corpus.devpath)
 end
