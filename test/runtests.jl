@@ -1,16 +1,14 @@
-using CorpusLoaders
 using Test
+using CorpusLoaders
 
 ENV["DATADEPS_ALWAYS_ACCEPT"] = "true";
 
 files = ["types",
-         "wikicorpus",
          "SemCor",
          "Senseval3",
-         "IMDB",
-         "Twitter",
-         "StanfordSentimentTreebank"
+         "wikicorpus"
         ]
+
 
 @testset "$file" for file in files
     include("test_" * file * ".jl")

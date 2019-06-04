@@ -14,13 +14,10 @@ export load
 export WikiCorpus, SemCor, Senseval3, IMDB, Twitter, StanfordSentimentTreebank
 
 function __init__()
-    include("WikiCorpus_DataDeps.jl")
-    include("SemCor_DataDeps.jl")
-    include("SemEval2007Task7_DataDeps.jl")
-    include("Senseval3_DataDeps.jl")
-    include("IMDB_DataDeps.jl")
-    include("Twitter_DataDeps.jl")
-    include("StanfordSentimentTreebank_DataDeps.jl")
+    include(joinpath(@__DIR__, "WikiCorpus_DataDeps.jl"))
+    include(joinpath(@__DIR__, "SemCor_DataDeps.jl"))
+    include(joinpath(@__DIR__, "SemEval2007Task7_DataDeps.jl"))
+    include(joinpath(@__DIR__, "Senseval3_DataDeps.jl"))
 end
 
 include("types.jl")

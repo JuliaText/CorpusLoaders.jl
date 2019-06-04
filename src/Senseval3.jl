@@ -16,10 +16,10 @@ end
 Senseval3() = Senseval3(datadep"Senseval 3")
 
 MultiResolutionIterators.levelname_map(::Type{Senseval3}) = [
-    :doc=>1, :contextfile=>1, :context=>1,
+    :doc=>1, :contextfile=>1, :context=>1, :document=>1,
     :sent=>2, :sentence=>2,
     :word=>3, :token=>3,
-    :char=>4, :character=>5
+    :char=>4, :character=>4
     ]
 
 
