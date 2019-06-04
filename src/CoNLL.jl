@@ -1,19 +1,33 @@
 struct CoNLL{S}
     filepaths::Vector{S}
+    year::Int
+    trainpath::String
+    testpath::String
+    devpath::String
 end
 
-function CoNLL(dirpath)
+function CoNLL(dirpath, year=2003)
     @assert(isdir(dirpath), dirpath)
 
-    files = []
-    for file in readdir(dirpath)
-        if length(file) > 4 && file[end-3:end] == ".txt"
-            push!(files, file)
+    files = Dict()
+
+    if year == 2003
+        inner_files = readdir(dirpath)
+        if "train.txt" ∈ inner_files
+            files["train"] = "train.txt"
+        end
+        if "test.txt" ∈ inner_files
+            files["test"] = "test.txt"
+        end
+        if "valid.txt" ∈ inner_files
+            files["valid"] = "valid.txt"
+        end
+        for tuple in files
+            files[tuple[1]] = joinpath(dirpath, tuple[2])
         end
     end
-
-    files = joinpath.(dirpath, files)
-    CoNLL(files)
+    return CoNLL(collect(values(files)), year, files["train"],
+                  files["test"], files["valid"])
 end
 
 CoNLL() = CoNLL(datadep"CoNLL 2003")
@@ -24,3 +38,48 @@ MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [
     :word=>3, :token=>3,
     :char=>4, :character=>4
     ]
+
+function parse_conllfile(filename)
+    local sent
+    local doc
+    docs = @NestedVector(TaggedWord,3)()
+    context = Document(intern(basename(filename)), docs)
+
+    # structure
+    function new_document()
+        doc = @NestedVector(TaggedWord,2)()
+        push!(docs, doc)
+    end
+
+    function new_sentence()
+        sent = @NestedVector(TaggedWord,1)()
+        push!(doc, sent)
+    end
+
+    # words
+    get_tagged(line) = push!(sent, parse_conll2003_tagged_word(line))
+
+    new_document()
+	new_sentence()
+
+    # parse
+    for line in eachline(filename)
+        if length(line) == 0
+            new_sentence()
+        elseif startswith(strip(line), "-DOCSTART-") && length(doc) != 0
+            isempty(doc[end]) && pop!(doc, lastindex(doc))
+            new_document()
+        else
+            get_tagged(line)
+        end
+    end
+    isempty(doc[end]) && pop!(doc, lastindex(doc))
+
+    return context
+end
+
+function load(corpus::CoNLL, file="train")
+    file == "train" && return parse_conll(corpus.trainpath)
+    file == "test" && return (corpus.testpath)
+    file == "dev" && return (corpus.devpath)
+end
