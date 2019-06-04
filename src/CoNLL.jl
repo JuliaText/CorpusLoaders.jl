@@ -33,7 +33,7 @@ end
 CoNLL() = CoNLL(datadep"CoNLL 2003")
 
 MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [
-    :doc=>1, :document=>1,
+    :doc=>1, :document=>1, :article=>1,
     :sent=>2, :sentence=>2,
     :word=>3, :token=>3,
     :char=>4, :character=>4
@@ -42,7 +42,8 @@ MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [
 function parse_conll2003_tagged_word(line::AbstractString)
 	tokens_tags = split(line)
 	length(tokens_tags) != 4 && throw("Error parsing line: \"$line\". Invalid Format.")
-	return CoNLL2003TaggedWord(tokens_tags[4], tokens_tags[1])
+	return CoNLL2003TaggedWord(tokens_tags[4], tokens_tags[3],
+	                           tokens_tags[2], tokens_tags[1])
 end
 
 function parse_conllfile(filename)
