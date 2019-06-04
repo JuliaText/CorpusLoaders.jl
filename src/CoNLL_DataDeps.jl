@@ -14,7 +14,7 @@ register(DataDep("CoNLL 2003",
     """,
     "https://github.com/davidsbatista/NER-datasets/archive/master.zip",
     "db332cddb12f123b92fc6653a582eec1b3f14e6741f9c6e0bf5d960c78dee3a0";
-    post_fetch_method = fn -> begin
+    post_fetch_method = function(fn)
         unpack(fn)
         dir = "NER-datasets-master"
         innerdir = joinpath(dir, "CONLL2003")
