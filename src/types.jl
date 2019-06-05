@@ -34,7 +34,6 @@ title(doc::Document) = doc.title
 
 #### Making nice with MultiResolutionIterators
 
-
 @generated function _call_on_content(ff, aiter::T) where T<:AnnotatedIterator
     constructor = T.name.name # Toss away the type params
     args =  map(fieldnames(T)) do fn
@@ -68,16 +67,25 @@ struct SenseAnnotatedWord <: TaggedWord
     lexsn::String
     word::String
     function SenseAnnotatedWord(pos, lemma, wnsn, lexsn, word)
-          new(intern(pos), intern(lemma), wnsn, intern(lexsn), intern(word))
+        new(intern(pos), intern(lemma), wnsn, intern(lexsn), intern(word))
     end
 end
-
 
 struct PosTaggedWord <: TaggedWord
     pos::String
     word::String
     function PosTaggedWord(pos, word)
-          new(intern(pos), intern(word))
+        new(intern(pos), intern(word))
+    end
+end
+
+struct NERTaggedWord <: TaggedWord
+    ner_tag::String
+    chunk::String
+    pos::String
+    word::String
+    function NERTaggedWord(ner_tag, chunk, pos, word)
+        new(intern(ner_tag), intern(chunk), intern(pos), intern(word))
     end
 end
 
@@ -86,7 +94,7 @@ const TaggedSentence = Vector{TaggedWord}
 word(tword::TaggedWord) = tword.word
 word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
-
+named_entity(ner_word::NERTaggedWord) = ner_word.ner_tag
 
 #######################
 
