@@ -40,26 +40,26 @@ MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [
     ]
 
 function parse_conll2003_tagged_word(line::AbstractString)
-	tokens_tags = split(line)
-	length(tokens_tags) != 4 && throw("Error parsing line: \"$line\". Invalid Format.")
-	return CoNLL2003TaggedWord(tokens_tags[4], tokens_tags[3],
-	                           tokens_tags[2], tokens_tags[1])
+    tokens_tags = split(line)
+    length(tokens_tags) != 4 && throw("Error parsing line: \"$line\". Invalid Format.")
+    return NERTaggedWord(tokens_tags[4], tokens_tags[3],
+                         tokens_tags[2], tokens_tags[1])
 end
 
 function parse_conllfile(filename)
     local sent
     local doc
-    docs = @NestedVector(TaggedWord,3)()
+    docs = @NestedVector(NERTaggedWord,3)()
     context = Document(intern(basename(filename)), docs)
 
     # structure
     function new_document()
-        doc = @NestedVector(TaggedWord,2)()
+        doc = @NestedVector(NERTaggedWord,2)()
         push!(docs, doc)
     end
 
     function new_sentence()
-        sent = @NestedVector(TaggedWord,1)()
+        sent = @NestedVector(NERTaggedWord,1)()
         push!(doc, sent)
     end
 
@@ -86,4 +86,5 @@ function load(corpus::CoNLL, file="train")
     file == "train" && return parse_conllfile(corpus.trainpath)
     file == "test" && return parse_conllfile(corpus.testpath)
     file == "dev" && return parse_conllfile(corpus.devpath)
+    throw("Invalid filename! Available datasets are `train`, `test` and `dev`")
 end

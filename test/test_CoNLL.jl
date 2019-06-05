@@ -20,7 +20,7 @@ end
     words = full_consolidate(flatten_levels(docs, (!lvls)(Senseval3, :word)))
     @test length(words) > length(docs)
     @test length(words) > sum(length.(docs))
-    @test typeof(words) == Vector{CorpusLoaders.CoNLL2003TaggedWord}
+    @test typeof(words) == Vector{CorpusLoaders.NERTaggedWord}
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}

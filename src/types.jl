@@ -79,12 +79,12 @@ struct PosTaggedWord <: TaggedWord
     end
 end
 
-struct CoNLL2003TaggedWord <: TaggedWord
+struct NERTaggedWord <: TaggedWord
     ner_tag::String
     chunk::String
     pos::String
     word::String
-    function CoNLL2003TaggedWord(ner_tag, chunk, pos, word)
+    function NERTaggedWord(ner_tag, chunk, pos, word)
         new(intern(ner_tag), intern(chunk), intern(pos), intern(word))
     end
 end
@@ -94,7 +94,7 @@ const TaggedSentence = Vector{TaggedWord}
 word(tword::TaggedWord) = tword.word
 word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
-named_entity(conllword::CoNLL2003TaggedWord) = conllword.ner_tag
+named_entity(ner_word::NERTaggedWord) = ner_word.ner_tag
 
 #######################
 
