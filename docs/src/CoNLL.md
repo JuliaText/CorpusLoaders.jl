@@ -31,86 +31,55 @@ The document contain only a sequence of words.
 julia> no_sent_boundary = flatten_levels(train, lvls(CoNLL, :sentence)) |> full_consolidate
 
 julia> typeof(no_sent_boundary)
-Document{Array{Array{NERTaggedWord,1},1},String}
+Document{Array{Array{CorpusLoaders.NERTaggedWord,1},1},String}
 
 julia> no_sent_boundary[1]
-469-element Array{NERTaggedWord,1}:
- NERTaggedWord("B-ORG", "B-NP", "NNP", "EU")
- NERTaggedWord("O", "B-VP", "VBZ", "rejects")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "German")
- NERTaggedWord("O", "I-NP", "NN", "call")
- NERTaggedWord("O", "B-VP", "TO", "to")
- NERTaggedWord("O", "I-VP", "VB", "boycott")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "British")
- NERTaggedWord("O", "I-NP", "NN", "lamb")
- NERTaggedWord("O", "O", ".", ".")
- NERTaggedWord("B-PER", "B-NP", "NNP", "Peter")
- NERTaggedWord("I-PER", "I-NP", "NNP", "Blackburn")
- NERTaggedWord("B-LOC", "B-NP", "NNP", "BRUSSELS")
- NERTaggedWord("O", "I-NP", "CD", "1996-08-22")
- NERTaggedWord("O", "B-NP", "DT", "The")
- NERTaggedWord("B-ORG", "I-NP", "NNP", "European")
- NERTaggedWord("I-ORG", "I-NP", "NNP", "Commission")
- NERTaggedWord("O", "B-VP", "VBD", "said")
- NERTaggedWord("O", "B-PP", "IN", "on")
- NERTaggedWord("O", "B-NP", "NNP", "Thursday")
- NERTaggedWord("O", "B-NP", "PRP", "it")
- NERTaggedWord("O", "B-VP", "VBD", "disagreed")
- NERTaggedWord("O", "B-PP", "IN", "with")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "German")
- NERTaggedWord("O", "I-NP", "NN", "advice")
- NERTaggedWord("O", "B-PP", "TO", "to")
+469-element Array{CorpusLoaders.NERTaggedWord,1}:
+ CorpusLoaders.NERTaggedWord("B-ORG", "B-NP", "NNP", "EU")
+ CorpusLoaders.NERTaggedWord("O", "B-VP", "VBZ", "rejects")
+ CorpusLoaders.NERTaggedWord("B-MISC", "B-NP", "JJ", "German")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "call")
+ CorpusLoaders.NERTaggedWord("O", "B-VP", "TO", "to")
+ CorpusLoaders.NERTaggedWord("O", "I-VP", "VB", "boycott")
+ CorpusLoaders.NERTaggedWord("B-MISC", "B-NP", "JJ", "British")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "lamb")
+ CorpusLoaders.NERTaggedWord("O", "O", ".", ".")
+ CorpusLoaders.NERTaggedWord("B-PER", "B-NP", "NNP", "Peter")
  ⋮
- NERTaggedWord("O", "B-NP", "JJ", "last")
- NERTaggedWord("O", "I-NP", "NN", "year")
- NERTaggedWord("O", "O", ",", ",")
- NERTaggedWord("O", "B-NP", "RB", "nearly")
- NERTaggedWord("O", "I-NP", "NN", "half")
- NERTaggedWord("O", "B-PP", "IN", "of")
- NERTaggedWord("O", "B-NP", "JJ", "total")
- NERTaggedWord("O", "I-NP", "NNS", "imports")
- NERTaggedWord("O", "O", ".", ".")
- NERTaggedWord("O", "B-NP", "PRP", "It")
- NERTaggedWord("O", "B-VP", "VBD", "brought")
- NERTaggedWord("O", "B-PP", "IN", "in")
- NERTaggedWord("O", "B-NP", "CD", "4,275")
- NERTaggedWord("O", "I-NP", "NNS", "tonnes")
- NERTaggedWord("O", "B-PP", "IN", "of")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "British")
- NERTaggedWord("O", "I-NP", "NN", "mutton")
- NERTaggedWord("O", "O", ",", ",")
- NERTaggedWord("O", "B-NP", "DT", "some")
- NERTaggedWord("O", "I-NP", "CD", "10")
- NERTaggedWord("O", "I-NP", "NN", "percent")
- NERTaggedWord("O", "B-PP", "IN", "of")
- NERTaggedWord("O", "B-NP", "JJ", "overall")
- NERTaggedWord("O", "I-NP", "NNS", "imports")
- NERTaggedWord("O", "O", ".", ".")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "mutton")
+ CorpusLoaders.NERTaggedWord("O", "O", ",", ",")
+ CorpusLoaders.NERTaggedWord("O", "B-NP", "DT", "some")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "CD", "10")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "percent")
+ CorpusLoaders.NERTaggedWord("O", "B-PP", "IN", "of")
+ CorpusLoaders.NERTaggedWord("O", "B-NP", "JJ", "overall")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NNS", "imports")
+ CorpusLoaders.NERTaggedWord("O", "O", ".", ".")
 ```
 
 Similarly we can flatten_levels at the document level
 to get a set of sentences of tagged words.
 
 ```julia
-julia> dataset = flatten_levels(train, lvls(CoNLL, :sentence)) |> full_consolidate
+julia> dataset = flatten_levels(train, lvls(CoNLL, :document)) |> full_consolidate
 
 julia> typeof(dataset)
-Document{Array{Array{TaggedWord,1},1},String}
+Document{Array{Array{CorpusLoaders.NERTaggedWord,1},1},String}
 
 julia> length(dataset) # Total number of sentences.
 14041
 
 julia> dataset[1]
-9-element Array{TaggedWord,1}:
- NERTaggedWord("B-ORG", "B-NP", "NNP", "EU")
- NERTaggedWord("O", "B-VP", "VBZ", "rejects")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "German")
- NERTaggedWord("O", "I-NP", "NN", "call")
- NERTaggedWord("O", "B-VP", "TO", "to")
- NERTaggedWord("O", "I-VP", "VB", "boycott")
- NERTaggedWord("B-MISC", "B-NP", "JJ", "British")
- NERTaggedWord("O", "I-NP", "NN", "lamb")
- NERTaggedWord("O", "O", ".", ".")
+9-element Array{CorpusLoaders.NERTaggedWord,1}:
+ CorpusLoaders.NERTaggedWord("B-ORG", "B-NP", "NNP", "EU")
+ CorpusLoaders.NERTaggedWord("O", "B-VP", "VBZ", "rejects")
+ CorpusLoaders.NERTaggedWord("B-MISC", "B-NP", "JJ", "German")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "call")
+ CorpusLoaders.NERTaggedWord("O", "B-VP", "TO", "to")
+ CorpusLoaders.NERTaggedWord("O", "I-VP", "VB", "boycott")
+ CorpusLoaders.NERTaggedWord("B-MISC", "B-NP", "JJ", "British")
+ CorpusLoaders.NERTaggedWord("O", "I-NP", "NN", "lamb")
+ CorpusLoaders.NERTaggedWord("O", "O", ".", ".")
 ```
 
 Accessing the tag could simply be done on the word level using
