@@ -13,8 +13,6 @@ A collection of various means for loading various different corpora used in NLP.
 
 
 
-
-
 ## Common Structure
 For some corpus which we will say has type `Corpus`,
 it will have a constructior `Corpus(path)` where `path` argument is a path to the files describing it.
@@ -38,6 +36,7 @@ Follow the links below for full docs on the usage of the corpora.
  - [WikiCorpus](docs/src/WikiCorpus.md)
  - [SemCor](docs/src/SemCor.md)
  - [Senseval3](docs/src/Senseval3.md)
+ - [CoNLL](docs/src/CoNLL.md)
  - [IMDB movie reviews](docs/src/IMDB.md)
  - [Twitter sentiment dataset](docs/src/Twitter.md)
  - [Stanford Sentiment Treebank](docs/src/SST.md)
