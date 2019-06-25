@@ -18,13 +18,11 @@ MultiResolutionIterators.levelname_map(::Type{StanfordSentimentTreebank}) = [
 ]
 
 function load(dataset::StanfordSentimentTreebank)
-    Channel(ctype=@NestedVector(Any, 1), csize=4) do docs
-        open(dataset.filepath, "r") do file
-            file = split.(split(read(file, String), '\n'), '|')
-            for example in file
-                sents = [intern.(tokenize(sent)) for sent in split_sentences(example[1])]
-                put!(docs, [sents, parse(Float64, example[2])])
-            end
-        end
+    data = map(eachline(dataset.filepath)) do line
+        doc_raw, sentiment_raw = split(line, '|')
+        sents = [intern.(tokenize(sent)) for sent in split_sentences(doc_raw)]
+        sentiment = parse(Float64, sentiment_raw)
+        [sents, sentiment]
     end
+    permutedims(hcat(data...))
 end

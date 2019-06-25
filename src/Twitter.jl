@@ -5,7 +5,9 @@ end
 function Twitter(category="train_pos")
     fileMap = Dict("train" => "training.1600000.processed.noemoticon.csv", "test" => "testdata.manual.2009.06.14.csv")
     polarityMap = Dict("pos" => 4, "neg" => 0, "neu" => 2)
-    file, polarity = fileMap[split(category, "_")[1]], polarityMap[split(category, "_")[2]]
+    file_id, polarity_id = split(category, "_")
+    file= fileMap[file_id],
+    polarity = polarityMap[polarity_id]
     path = joinpath(datadep"Twitter Sentiment Dataset", "$file")
     dataframe = CSV.read(path, header=0)
     return Twitter(dataframe.Column6[dataframe.Column1 .== polarity])

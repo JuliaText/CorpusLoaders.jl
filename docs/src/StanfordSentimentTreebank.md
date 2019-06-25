@@ -9,40 +9,51 @@ To get desired levels, `flatten_levels` function from [MultiResolutionIterators.
 
 ## Usage:
 
+The output dataset is a 2-dimensional `Array` with first column as `Vector`s of sentences as tokens and second column as their respective sentiment scores.
+
 ```
 julia> dataset = load(StanfordSentimentTreebank())
-Channel{Array{Any,1}}(sz_max:4,sz_curr:4)
+239232×2 Array{Any,2}:
+ Array{String,1}[["!"]]
+             …  0.5
+ Array{String,1}[["!"], ["'"]]
+                0.52778
+ Array{String,1}[["!"], ["'", "'"]]
+                0.5
+ Array{String,1}[["!"], ["Alas"]]
+                0.44444
+ Array{String,1}[["!"], ["Brilliant"]]
+                0.86111
+ Array{String,1}[["!"], ["Brilliant", "!"]]
+             …  0.93056
+ Array{String,1}[["!"], ["Brilliant", "!"], ["'"]]
+                1.0
+ Array{String,1}[["!"], ["C", "'", "mon"]]
+                0.47222
+ Array{String,1}[["!"], ["Gollum", "'", "s", "`", "performance", "'", "is", "incredible"]]
+                0.76389
+ Array{String,1}[["!"], ["Oh", ",", "look", "at", "that", "clever", "angle", "!"], ["Wow", ",", "a", "jump", "cut", "!"]]
+                0.27778
+ Array{String,1}[["!"], ["Romething"]]
+             …  0.5
+ Array{String,1}[["!"], ["Run"]]
+                0.43056
+ Array{String,1}[["!"], ["The", "Movie"]]
+                0.5
+ Array{String,1}[["!"], ["The", "camera", "twirls", "!"], ["Oh", ",", "look", "at", "that", "clever", "angle", "!"], ["Wow", ",", "a", "jump", "cut", "!"]]
+                0.22222
+ Array{String,1}[["!"], ["True", "Hollywood", "Story"]]
+                0.55556
+ Array{String,1}[["!"], ["Wow"]]
+             …  0.77778
+ ⋮ …
 
-julia> using Base.Iterators
-
-julia> data = collect(take(dataset, 5))
-5-element Array{Array{Any,1},1}:
- [Array{String,1}[["!"]], 0.5]
- [Array{String,1}[["!"], ["'"]], 0.52778]
- [Array{String,1}[["!"], ["'", "'"]], 0.5]
- [Array{String,1}[["!"], ["Alas"]], 0.44444]
- [Array{String,1}[["!"], ["Brilliant"]], 0.86111]
 ```
 
-# To convert the `data` from `Array` of `Array` to a 2-D `Array`:
+# To get phrases from `data`:
 
 ```
-julia> data = permutedims(reshape(hcat(data...), (length(data[1]), length(data))))
-5×2 Array{Any,2}:
- Array{String,1}[["!"]]                 0.5
- Array{String,1}[["!"], ["'"]]          0.52778
- Array{String,1}[["!"], ["'", "'"]]     0.5
- Array{String,1}[["!"], ["Alas"]]       0.44444
- Array{String,1}[["!"], ["Brilliant"]]  0.86111
-```
-[hcat](https://docs.julialang.org/en/v1.0/base/arrays/#Base.hcat), [vcat](https://docs.julialang.org/en/v1.0/base/arrays/#Base.vcat), [permutedims](https://docs.julialang.org/en/v1.0/base/arrays/#Base.permutedims) and [reshape](https://docs.julialang.org/en/v1.0/base/arrays/#Base.reshape) can be used in different ways to get desired `Array` shape.
-
-# Using `flatten_levels`;
-
-Getting phrases from `data`:
-
-```
-julia> phrases = data[:, 1]       #Here `data1`is a 2-D Array
+julia> phrases = dataset[1:5, 1]       #Here `data1`is a 2-D Array
 5-element Array{Any,1}:
  Array{String,1}[["!"]]
  Array{String,1}[["!"], ["'"]]
@@ -51,10 +62,10 @@ julia> phrases = data[:, 1]       #Here `data1`is a 2-D Array
  Array{String,1}[["!"], ["Brilliant"]]
 ```
 
-To get sentiments values:
+# To get sentiments values:
 
 ```
-julia> values = data[:, 2]          #Here "data" is a 2-D Array
+julia> values = data[1:5, 2]          #Here "data" is a 2-D Array
 5-element Array{Any,1}:
  0.5
  0.52778
@@ -63,7 +74,9 @@ julia> values = data[:, 2]          #Here "data" is a 2-D Array
  0.86111
 ```
 
-To get an `Array` of all sentences from all the `phrases` (since phrases can contain more than one sentence):
+# Using `flatten_levels`
+
+To get an `Array` of all sentences from all the `phrases` (since each phrase can contain more than one sentence):
 
 ```
 julia> sentences = flatten_levels(phrases, (lvls)(StanfordSentimentTreebank, :documents))|>full_consolidate
