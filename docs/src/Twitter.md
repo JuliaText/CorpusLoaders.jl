@@ -22,6 +22,8 @@ Example:
 julia> dataset_test_pos = load(Twitter("test_pos"))
 Channel{Array{Array{String,1},1}}(sz_max:4,sz_curr:4)
 
+julia> using Base.Iterators
+
 julia> tweets = collect(take(dataset_test_pos, 2))
 2-element Array{Array{Array{String,1},1},1}:
  [["@", "stellargirl", "I", "loooooooovvvvvveee", "my", "Kindle", "2", "."], ["Not", "that", "the", "DX", "is", "cool", ",", "but", "the", "2", "is", "fantastic", "in", "its", "own", "right", "."]]
@@ -79,7 +81,8 @@ julia> tweets = collect(take(dataset_train_pos, 4))
 ["I", "got", "to", "meet", "you", "once", "at", "a", "HIN", "show"  …  "in", "the", "DC", "area", "and", "you", "were", "a", "sweetheart", "."]]
 [["Being", "sick", "can", "be", "really", "cheap", "when", "it", "hurts", "too"  …  "eat", "real", "food", "Plus", ",", "your", "friends", "make", "you", "soup"]]
 
-julia> flatten_levels(tweets, (!lvls)(Twitter, :words))|>full_consolidate85-element Array{String,1}: "I" "LOVE" "@" "Health"
+julia> flatten_levels(tweets, (!lvls)(Twitter, :words))|>full_consolidate
+85-element Array{String,1}: "I" "LOVE" "@" "Health"
  "4"
  "UandPets"
  "u"
