@@ -4,7 +4,7 @@ end
 
 function Twitter(category="train_pos")
     file_map = Dict("train" => "training.1600000.processed.noemoticon.csv", "test" => "testdata.manual.2009.06.14.csv")
-    polarit_map = Dict("pos" => 4, "neg" => 0, "neu" => 2)
+    polarity_map = Dict("pos" => 4, "neg" => 0, "neu" => 2)
     file_id, polarity_id = split(category, "_")
     file = file_map[file_id]
     polarity = polarity_map[polarity_id]
