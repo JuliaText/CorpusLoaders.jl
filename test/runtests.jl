@@ -5,6 +5,9 @@ files = ["types",
          "SemCor",
          "Senseval3",
          "CoNLL",
+         "IMDB",
+         "Twitter",
+         "StanfordSentimentTreebank",
          "wikicorpus"
         ]
 

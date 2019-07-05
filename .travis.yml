@@ -2,7 +2,7 @@
 language: julia
 os:
   - linux
-#  - osx
+  - osx
 env:
   - DATADEPS_ALWAYS_ACCEPT=true
 julia:
@@ -12,12 +12,13 @@ matrix:
   allow_failures:
     - julia: nightly
 notifications:
-  email: false
-  
+email: false
+
 # uncomment the following lines to override the default test script
 #script:
 #  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("CorpusLoaders"); Pkg.test("CorpusLoaders"; coverage=true)'
+
 after_success:
   # Push Documentation
   - julia -e 'Pkg.add("Documenter")'

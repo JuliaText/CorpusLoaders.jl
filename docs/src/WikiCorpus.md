@@ -3,12 +3,12 @@
 
 Very commonly used corpus in general.
 The loader (and default datadep) is for [Samuel Reese's 2006 based corpus](http://www.lsi.upc.edu/~nlp/wikicorpus/).
-The only real feature we rely on the input having is the `<doc title="DocTitle"..>` tags seperating the documents.
+The only real feature we rely on the input having is the `<doc title="DocTitle"..>` tags separating the documents.
 So any corpus following close-enough to that should work.
 
 We capture a lot of structure.
-Document, section, paragaph/line, sentence, word.
-Note that paragaph/line level does not differnetiate between a paragraph of prose, vs a line in a list.
+Document, section, paragraph/line, sentence, word.
+Note that paragraph/line level does not differentiate between a paragraph of prose, vs a line in a list.
 
 Most users are not going to be wanting that level of structure,
 so should use `flatten_levels` (from MultiResolutionIterators.jl)  to get rid of levels they don't want.

@@ -37,3 +37,6 @@ Follow the links below for full docs on the usage of the corpora.
  - [SemCor](docs/src/SemCor.md)
  - [Senseval3](docs/src/Senseval3.md)
  - [CoNLL](docs/src/CoNLL.md)
+ - [IMDB movie reviews](docs/src/IMDB.md)
+ - [Twitter sentiment dataset](docs/src/Twitter.md)
+ - [Stanford Sentiment Treebank](docs/src/SST.md)
