@@ -1,5 +1,4 @@
-
-## SemCor
+# SemCor
 
 The classical Sense Annotated corpus.
 See also [WordNet.jl](https://github.com/JuliaText/WordNet.jl)

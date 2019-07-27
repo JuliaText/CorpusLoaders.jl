@@ -1,4 +1,5 @@
-## Senseval-3
+# Senseval-3
+
 Senseval-3 is a sense annotated corpus
 Has a structure of documents, sentences, words.
 The words are either tagged with part of speech, or tagged with full lemma, part of speech and sensekey.

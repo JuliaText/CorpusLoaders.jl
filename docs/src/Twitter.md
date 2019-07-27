@@ -1,4 +1,4 @@
-## Twitter
+# Twitter
 
 Twitter sentiment dataset by Nick Sanders. Downloaded from [Sentiment140 site](http://help.sentiment140.com/for-students).
 It is large dataset for the Sentiment Analysis task. Every tweets falls in either three categories positive(4), negative(0) or neutral(2).It contains 1600000 training examples and 498 testing examples.
@@ -18,7 +18,7 @@ Example:
 
 #Using "test_pos" keyword for getting positive polarity sentiment examples
 
-```
+```julia
 julia> dataset_test_pos = load(Twitter("test_pos"))
 Channel{Array{Array{String,1},1}}(sz_max:4,sz_curr:4)
 
@@ -67,7 +67,7 @@ julia> tweets = collect(take(dataset_test_pos, 2))
 
 #Using "train_pos" category to get positive polarity sentiment examples
 
-```
+```julia
 julia> dataset_train_pos = load(Twitter()) #no need to specify category because "train_pos" is default
 Channel{Array{Array{String,1},1}}(sz_max:4,sz_curr:4)
 
