@@ -21,8 +21,7 @@ email: false
 
 after_success:
   # Push Documentation
-  - julia -e 'Pkg.add("Documenter")'
-  - julia -e 'cd(Pkg.dir("CorpusLoaders")); include(joinpath("docs", "make.jl"))'
+  - julia -e 'using Pkg; Pkg.add("Documenter"); cd(Pkg.dir("CorpusLoaders")); include(joinpath("docs", "make.jl"))'
   # push coverage results to Coveralls
   - julia -e 'cd(Pkg.dir("CorpusLoaders")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
