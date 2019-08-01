@@ -4,8 +4,10 @@ using Base.Iterators
 using MultiResolutionIterators
 using InternedStrings
 
-if ENV["CI"]=="true" && ENV["TRAVIS"]=="true"
-    @warn "WikiCorpus tests disabled on TravisCI"
+if ENV["CI"] == "true" && ENV["TRAVIS"] == "true"
+    @warn "WikiCorpus tests disabled on TravisCI."
+elseif ENV["CI"] == "True" && ENV["APPVEYOR"] == "True"
+    @warn "WikiCorpus tests disabled on AppveyorCI."
 else
     # Do the tests
     @testset "basic use" begin
