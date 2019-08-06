@@ -1,4 +1,4 @@
-### IMDB
+# IMDB
 
 IMDB movie reviews dataset a standard collection for Binary Sentiment Analysis task. It is used for benchmarking Sentiment Analysis algorithms. It provides a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. There is additional unlabeled data for use as well. Raw text and already processed bag of words formats are provided
 
@@ -19,7 +19,7 @@ Example:
 
 #Using "test_neg" keywords for negative test set examples
 
-```
+```julia
  julia> dataset_test_neg = load(IMDB("test_neg"))
 Channel{Array{Array{String,1},1}}(sz_max:4,sz_curr:4)
 
@@ -32,7 +32,7 @@ julia> docs = collect(take(dataset_test_neg, 2))
 
 #Using "train_pos" keyword for positive train set examples
 
-```
+```julia
 julia> dataset_train_pos = load(IMDB())   #no need to specify category because "train_pos" is default
 Channel{Array{Array{String,1},1}}(sz_max:4,sz_curr:4)
 

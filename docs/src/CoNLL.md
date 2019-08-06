@@ -1,4 +1,4 @@
-## CoNLL 2003
+# CoNLL 2003
 The CoNLL-2003 shared task data files
 is made from the the Reuters Corpus,
 is a collection of news wire articles.
