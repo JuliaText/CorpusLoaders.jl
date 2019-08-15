@@ -13,7 +13,7 @@ register(DataDep("WikiGold",
     https://www.aclweb.org/anthology/papers/W/W09/W09-3302/
     """,
     "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/9446377/wikigold.conll.txt",
+    "c797a64d0cf73ed058363f77671486bcfd413e70fda1726ad4a6ba624455225f";
     post_fetch_method = function(fn)
-        println(readdir("."))
     end
 ))
