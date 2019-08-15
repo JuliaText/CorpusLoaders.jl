@@ -1,5 +1,4 @@
-
-### WikiCorpus
+# WikiCorpus
 
 Very commonly used corpus in general.
 The loader (and default datadep) is for [Samuel Reese's 2006 based corpus](http://www.lsi.upc.edu/~nlp/wikicorpus/).
@@ -17,7 +16,7 @@ so should use `flatten_levels` (from MultiResolutionIterators.jl)  to get rid of
 
 Example:
 
-```
+```julia
 julia> using CorpusLoaders;
 julia> using MultiResolutionIterators;
 julia> using Base.Iterators;
