@@ -50,7 +50,7 @@ function parse_WikiGoldfile(filename)
             get_tagged(line)
         end
     end
-    isempty(doc[end]) && deleteat!(doc, lastindex(doc))
+    isempty(vcat(docs[end]...)) && deleteat!(docs, lastindex(docs))
 
     return context
 end
