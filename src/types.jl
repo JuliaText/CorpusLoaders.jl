@@ -89,10 +89,10 @@ struct NERTaggedWord <: TaggedWord
     end
 end
 
-struct WikiGoldWord <: TaggedWord
+struct NerOnlyTaggedWord <: TaggedWord
     ner_tag::String
     word::String
-    function WikiGoldWord(ner_tag, word)
+    function NerOnlyTaggedWord(ner_tag, word)
         new(intern(ner_tag), intern(word))
     end
 end
@@ -103,7 +103,7 @@ word(tword::TaggedWord) = tword.word
 word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
 named_entity(ner_word::NERTaggedWord) = ner_word.ner_tag
-named_entity(ner_word::WikiGoldWord) = ner_word.ner_tag
+named_entity(ner_word::NerOnlyTaggedWord) = ner_word.ner_tag
 
 #######################
 

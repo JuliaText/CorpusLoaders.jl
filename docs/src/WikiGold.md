@@ -17,7 +17,7 @@ Structure of each set is - `document, sentences, words, characters`.
 ```julia
 
 julia> typeof(dataset)
-Document{Array{Array{Array{CorpusLoaders.WikiGoldWord,1},1},1},String}
+Document{Array{Array{Array{CorpusLoaders.NerOnlyTaggedWord,1},1},1},String}
 
 julia>
 
@@ -34,27 +34,27 @@ julia> using MultiResolutionIterators
 julia> no_sent_boundary = flatten_levels(dataset, lvls(WikiGold, :sentence)) |> full_consolidate
 
 julia> typeof(no_sent_boundary)
-Document{Array{Array{CorpusLoaders.WikiGoldWord,1},1},String}
+Document{Array{Array{CorpusLoaders.NerOnlyTaggedWord,1},1},String}
 
 julia> no_sent_boundary[1]
-142-element Array{CorpusLoaders.WikiGoldWord,1}:
- CorpusLoaders.WikiGoldWord("I-MISC", "010")
- CorpusLoaders.WikiGoldWord("O", "is")
- CorpusLoaders.WikiGoldWord("O", "the")
- CorpusLoaders.WikiGoldWord("O", "tenth")
- CorpusLoaders.WikiGoldWord("O", "album")
- CorpusLoaders.WikiGoldWord("O", "from")
- CorpusLoaders.WikiGoldWord("I-MISC", "Japanese")
- CorpusLoaders.WikiGoldWord("O", "Punk")
+142-element Array{CorpusLoaders.NerOnlyTaggedWord,1}:
+ CorpusLoaders.NerOnlyTaggedWord("I-MISC", "010")
+ CorpusLoaders.NerOnlyTaggedWord("O", "is")
+ CorpusLoaders.NerOnlyTaggedWord("O", "the")
+ CorpusLoaders.NerOnlyTaggedWord("O", "tenth")
+ CorpusLoaders.NerOnlyTaggedWord("O", "album")
+ CorpusLoaders.NerOnlyTaggedWord("O", "from")
+ CorpusLoaders.NerOnlyTaggedWord("I-MISC", "Japanese")
+ CorpusLoaders.NerOnlyTaggedWord("O", "Punk")
  ⋮
- CorpusLoaders.WikiGoldWord("O", "and")
- CorpusLoaders.WikiGoldWord("O", "most")
- CorpusLoaders.WikiGoldWord("O", "of")
- CorpusLoaders.WikiGoldWord("O", "the")
- CorpusLoaders.WikiGoldWord("O", "tracks")
- CorpusLoaders.WikiGoldWord("O", "were")
- CorpusLoaders.WikiGoldWord("O", "re-engineered")
- CorpusLoaders.WikiGoldWord("O", ".")
+ CorpusLoaders.NerOnlyTaggedWord("O", "and")
+ CorpusLoaders.NerOnlyTaggedWord("O", "most")
+ CorpusLoaders.NerOnlyTaggedWord("O", "of")
+ CorpusLoaders.NerOnlyTaggedWord("O", "the")
+ CorpusLoaders.NerOnlyTaggedWord("O", "tracks")
+ CorpusLoaders.NerOnlyTaggedWord("O", "were")
+ CorpusLoaders.NerOnlyTaggedWord("O", "re-engineered")
+ CorpusLoaders.NerOnlyTaggedWord("O", ".")
 ```
 
 Similarly we can flatten_levels at the document level
@@ -64,29 +64,30 @@ to get a set of sentences of tagged words.
 julia> my_dataset = flatten_levels(dataset, lvls(WikiGold, :document)) |> full_consolidate
 
 julia> typeof(my_dataset)
-Document{Array{Array{CorpusLoaders.WikiGoldWord,1},1},String}
+Document{Array{Array{CorpusLoaders.NerOnlyTaggedWord,1},1},String}
 
 julia> length(my_dataset) # Gives us total number of sentences
 1696
 
 
 julia> my_dataset[1]
-15-element Array{CorpusLoaders.WikiGoldWord,1}:
- CorpusLoaders.WikiGoldWord("I-MISC", "010")     
- CorpusLoaders.WikiGoldWord("O", "is")           
- CorpusLoaders.WikiGoldWord("O", "the")          
- CorpusLoaders.WikiGoldWord("O", "tenth")        
- CorpusLoaders.WikiGoldWord("O", "album")        
- CorpusLoaders.WikiGoldWord("O", "from")         
- CorpusLoaders.WikiGoldWord("I-MISC", "Japanese")
- CorpusLoaders.WikiGoldWord("O", "Punk")         
- CorpusLoaders.WikiGoldWord("O", "Techno")       
- CorpusLoaders.WikiGoldWord("O", "band")         
- CorpusLoaders.WikiGoldWord("I-ORG", "The")      
- CorpusLoaders.WikiGoldWord("I-ORG", "Mad")      
- CorpusLoaders.WikiGoldWord("I-ORG", "Capsule")  
- CorpusLoaders.WikiGoldWord("I-ORG", "Markets")  
- CorpusLoaders.WikiGoldWord("O", ".")  
+15-element Array{CorpusLoaders.NerOnlyTaggedWord,1}:
+ CorpusLoaders.NerOnlyTaggedWord("I-MISC", "010")
+ CorpusLoaders.NerOnlyTaggedWord("O", "is")
+ CorpusLoaders.NerOnlyTaggedWord("O", "the")
+ CorpusLoaders.NerOnlyTaggedWord("O", "tenth")
+ CorpusLoaders.NerOnlyTaggedWord("O", "album")
+ CorpusLoaders.NerOnlyTaggedWord("O", "from")
+ CorpusLoaders.NerOnlyTaggedWord("I-MISC", "Japanese")
+ CorpusLoaders.NerOnlyTaggedWord("O", "Punk")
+ CorpusLoaders.NerOnlyTaggedWord("O", "Techno")
+ CorpusLoaders.NerOnlyTaggedWord("O", "band")
+ CorpusLoaders.NerOnlyTaggedWord("I-ORG", "The")
+ CorpusLoaders.NerOnlyTaggedWord("I-ORG", "Mad")
+ CorpusLoaders.NerOnlyTaggedWord("I-ORG", "Capsule")
+ CorpusLoaders.NerOnlyTaggedWord("I-ORG", "Markets")
+ CorpusLoaders.NerOnlyTaggedWord("O", ".")
+
 ```
 
 Accessing the tag could simply be done on the word level using

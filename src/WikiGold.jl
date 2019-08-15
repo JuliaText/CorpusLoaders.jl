@@ -14,23 +14,23 @@ MultiResolutionIterators.levelname_map(::Type{WikiGold}) = [
 function parse_WikiGold_tagged_word(line::AbstractString)
     tokens_tags = split(line)
     length(tokens_tags) != 2 && throw("Error parsing line: \"$line\". Invalid Format.")
-    return WikiGoldWord(tokens_tags[2], tokens_tags[1])
+    return NerOnlyTaggedWord(tokens_tags[2], tokens_tags[1])
 end
 
 function parse_WikiGoldfile(filename)
     local sent
     local doc
-    docs = @NestedVector(WikiGoldWord,3)()
+    docs = @NestedVector(NerOnlyTaggedWord,3)()
     context = Document(intern(basename(filename)), docs)
 
     # structure
     function new_document()
-        doc = @NestedVector(WikiGoldWord,2)()
+        doc = @NestedVector(NerOnlyTaggedWord,2)()
         push!(docs, doc)
     end
 
     function new_sentence()
-        sent = @NestedVector(WikiGoldWord,1)()
+        sent = @NestedVector(NerOnlyTaggedWord,1)()
         push!(doc, sent)
     end
 

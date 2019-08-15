@@ -17,7 +17,7 @@ end
     words = full_consolidate(flatten_levels(docs, (!lvls)(WikiGold, :word)))
     @test length(words) > length(docs)
     @test length(words) > sum(length.(docs))
-    @test typeof(words) == Vector{CorpusLoaders.WikiGoldWord}
+    @test typeof(words) == Vector{CorpusLoaders.NerOnlyTaggedWord}
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}
