@@ -6,7 +6,7 @@ register(DataDep("WikiGold",
 
     WikiGold is a manually annotated corpus over a small sample of Wikipedia articles in CoNLL format (IOB).
     It contains 145 documents, 1696 sentences and 39152 tokens.
-    The Corpus has topics from each of the four CONLL-03 classes (LOC, MISC, ORG, PER).
+    The words have been labelled for each of the four CONLL-03 Named Enitty classes (LOC, MISC, ORG, PER).
 
     Please cite the following publication, if you are using the corpora:
     Dominic Balasuriya, Nicky Ringland, Joel Nothman, Tara Murphy, James R. Curran, 2009. Named Entity Recognition in Wikipedia, Proceedings of the 2009 Workshop on the People’s Web Meets NLP, ACL-IJCNLP 2009, pages 10–18.
