@@ -8,7 +8,8 @@ files = ["types",
          "IMDB",
          "Twitter",
          "StanfordSentimentTreebank",
-         "wikicorpus"
+         "wikicorpus",
+         "wikigold"
         ]
 
 

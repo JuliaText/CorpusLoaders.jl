@@ -4,23 +4,20 @@ using Base.Iterators
 using MultiResolutionIterators
 
 @testset "Basic use" begin
-    train = load(CoNLL(), "train")
-    test = load(CoNLL(), "test")
-    dev = load(CoNLL(), "dev")
+    dataset = load(WikiGold())
 
-    @test length(train) > 0
-    @test length(test) > 0
-    @test length(dev) > 0
+    @test length(dataset) > 0
+    @test minimum(length.(dataset)) > 0
 end
 
 @testset "Using flatten_levels" begin
-    train = load(CoNLL())
-    docs = train[1:5]
+    dataset = load(WikiGold())
+    docs = dataset[1:5]
 
-    words = full_consolidate(flatten_levels(docs, (!lvls)(CoNLL, :word)))
+    words = full_consolidate(flatten_levels(docs, (!lvls)(WikiGold, :word)))
     @test length(words) > length(docs)
     @test length(words) > sum(length.(docs))
-    @test typeof(words) == Vector{CorpusLoaders.NERTaggedWord}
+    @test typeof(words) == Vector{CorpusLoaders.WikiGoldWord}
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}
