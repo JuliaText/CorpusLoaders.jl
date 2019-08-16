@@ -44,13 +44,17 @@ function parse_WikiGoldfile(filename)
         if length(line) == 0
             new_sentence()
         elseif startswith(strip(line), "-DOCSTART-")
+            # Handle the case of Document with zero sentences before pushing into context.
             length(docs) > 0 && isempty(doc[end]) && deleteat!(doc, lastindex(doc))
             new_document()
         else
             get_tagged(line)
         end
     end
-    isempty(vcat(docs[end]...)) && deleteat!(docs, lastindex(docs))
+
+    # The file - `filename` ends with the following two lines `-DOCSTART-\n \n`.
+    # The following lines removes this document containing only empty sentence at the end.
+    all(isempty, docs[end]) && deleteat!(docs, lastindex(docs))
 
     return context
 end
