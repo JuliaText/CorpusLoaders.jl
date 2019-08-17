@@ -102,3 +102,26 @@ British => B-MISC
 lamb => O
 . => O
 ```
+
+Similarly the Part of Speech tags can be extracted.
+
+    CorpusLoaders.part_of_speech(tagged_word)
+
+```julia
+
+julia> for tagged_word in dataset[1]
+           pos_tag = CorpusLoaders.part_of_speech(tagged_word)
+           w = word(tagged_word)
+           println("$w => $pos_tag")
+       end
+EU => NNP
+rejects => VBZ
+German => JJ
+call => NN
+to => TO
+boycott => VB
+British => JJ
+lamb => NN
+. => .
+
+```
