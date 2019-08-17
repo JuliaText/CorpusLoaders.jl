@@ -89,12 +89,21 @@ struct NERTaggedWord <: TaggedWord
     end
 end
 
+struct NerOnlyTaggedWord <: TaggedWord
+    ner_tag::String
+    word::String
+    function NerOnlyTaggedWord(ner_tag, word)
+        new(intern(ner_tag), intern(word))
+    end
+end
+
 const TaggedSentence = Vector{TaggedWord}
 
 word(tword::TaggedWord) = tword.word
 word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
 named_entity(ner_word::NERTaggedWord) = ner_word.ner_tag
+named_entity(ner_word::NerOnlyTaggedWord) = ner_word.ner_tag
 
 #######################
 

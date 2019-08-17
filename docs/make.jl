@@ -12,6 +12,7 @@ makedocs(modules = [CorpusLoaders],
              "StanfordSentimentTreebank" => "StanfordSentimentTreebank.md",
              "Twitter" => "Twitter.md",
              "WikiCorpus" => "WikiCorpus.md",
+             "WikiGold" => "WikiGold.md",
              "API References" => "APIReference.md"
         ])
 
