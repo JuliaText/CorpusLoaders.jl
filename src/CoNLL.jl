@@ -30,7 +30,6 @@ function CoNLL(dirpath, year=2003)
                   files["test"], files["valid"])
 end
 
-
 CoNLL() = CoNLL(datadep"CoNLL 2003")
 
 MultiResolutionIterators.levelname_map(::Type{CoNLL}) = [

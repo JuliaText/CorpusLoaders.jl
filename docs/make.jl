@@ -6,6 +6,7 @@ makedocs(modules = [CorpusLoaders],
          pages = [
              "Home" => "index.md",
              "CoNLL" => "CoNLL.md",
+             "CoNLL2000" => "CoNLL2000.md",
              "IMDB" => "IMDB.md",
              "SemCor" => "SemCor.md",
              "Senseval3" => "Senseval3.md",
