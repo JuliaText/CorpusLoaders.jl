@@ -1,7 +1,7 @@
 using DataDeps
 
-for (file, checksum) in [("train", "82033cd7a72b209923a98007793e8f9de3abc1c8b79d646c50648eb949b87cea"),
-                        ("test", "73b7b1e565fa75a1e22fe52ecdf41b6624d6f59dacb591d44252bf4d692b1628")]
+for (file, checksum) in [("train", "bcbbe17c487d0939d48c2d694622303edb3637ca9c4944776628cd1815c5cb34"),
+                        ("test", "2695b931a505b65b1d3fe2a5aa0d749edcd53d786278da6d7726714e1426fbe8")]
     register(DataDep("CoNLL 2000 $file",
         """
         Website: https://www.clips.uantwerpen.be/conll2000/chunking/$file.txt.gz
