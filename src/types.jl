@@ -97,6 +97,15 @@ struct NerOnlyTaggedWord <: TaggedWord
     end
 end
 
+struct POSTaggedWord <: TaggedWord
+    pos::String
+    chunk::String
+    word::String
+    function POSTaggedWord(pos, chunk, word)
+        new(intern(pos), intern(chunk), intern(word))
+    end
+end
+
 const TaggedSentence = Vector{TaggedWord}
 
 word(tword::TaggedWord) = tword.word
@@ -104,6 +113,7 @@ word(str::AbstractString) = str
 sensekey(saword::SenseAnnotatedWord) = saword.lemma * "%" * saword.lexsn
 named_entity(ner_word::NERTaggedWord) = ner_word.ner_tag
 named_entity(ner_word::NerOnlyTaggedWord) = ner_word.ner_tag
+part_of_speech(pos_word::POSTaggedWord) = pos_word.pos
 
 #######################
 

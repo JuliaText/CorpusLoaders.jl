@@ -7,11 +7,11 @@ using Glob
 using StringEncodings
 using CSV
 
-export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord, CoNLL2003TaggedWord
+export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
 export title, sensekey, word
 export load
 
-export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold
+export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold, CoNLL2000
 
 function __init__()
     include(joinpath(@__DIR__, "WikiCorpus_DataDeps.jl"))
@@ -23,6 +23,7 @@ function __init__()
     include(joinpath(@__DIR__, "Twitter_DataDeps.jl"))
     include(joinpath(@__DIR__, "StanfordSentimentTreebank_DataDeps.jl"))
     include(joinpath(@__DIR__, "WikiGold_DataDeps.jl"))
+    include(joinpath(@__DIR__, "CoNLL2000_DataDeps.jl"))
 end
 
 include("types.jl")
@@ -36,5 +37,6 @@ include("IMDB.jl")
 include("Twitter.jl")
 include("StanfordSentimentTreebank.jl")
 include("WikiGold.jl")
+include("CoNLL2000.jl")
 
 end
