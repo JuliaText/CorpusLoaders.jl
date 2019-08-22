@@ -84,11 +84,11 @@ julia> dataset[1]
 
 Accessing the tag could simply be done on the word level using
 
-    CorpusLoaders.named_entity(tagged_word)
+    named_entity(tagged_word)
 
 ```julia
 julia> for tagged_word in dataset[1]
-           ner_tag = CorpusLoaders.named_entity(tagged_word)
+           ner_tag = named_entity(tagged_word)
            w = word(tagged_word)
            println("$w => $ner_tag")
        end
@@ -105,12 +105,12 @@ lamb => O
 
 Similarly the Part of Speech tags can be extracted.
 
-    CorpusLoaders.part_of_speech(tagged_word)
+    part_of_speech(tagged_word)
 
 ```julia
 
 julia> for tagged_word in dataset[1]
-           pos_tag = CorpusLoaders.part_of_speech(tagged_word)
+           pos_tag = part_of_speech(tagged_word)
            w = word(tagged_word)
            println("$w => $pos_tag")
        end

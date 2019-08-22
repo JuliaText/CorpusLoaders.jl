@@ -25,9 +25,9 @@ end
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}
 
-    ner_tags = CorpusLoaders.named_entity.(words)
+    ner_tags = named_entity.(words)
     @test typeof(ner_tags) <: Vector{String}
 
-    pos_tags = CorpusLoaders.part_of_speech.(words)
+    pos_tags = part_of_speech.(words)
     @test typeof(pos_tags) <: Vector{String}
 end
