@@ -60,6 +60,6 @@ end
 function load(corpus::CoNLL2000, file="train")
     file == "train" && return parse_conll2000file(corpus.trainpath)
     file == "test" && return parse_conll2000file(corpus.testpath)
-    file == "dev" && throw("Dev set not Available in $year.")
+    file == "dev" && throw("Dev set not available in $year.")
     throw("Invalid filename! Available datasets are `train` & `test`")
 end
