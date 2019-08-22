@@ -8,7 +8,7 @@ using StringEncodings
 using CSV
 
 export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord, CoNLL2003TaggedWord
-export title, sensekey, word
+export title, sensekey, word, named_entity, part_of_speech
 export load
 
 export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold
