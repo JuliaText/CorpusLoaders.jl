@@ -56,12 +56,12 @@ julia> collect(no_sentence_boundary)
 
 Accessing the tag could simply be done on the word level using
 
-    CorpusLoaders.part_of_speech(tagged_word)
+    part_of_speech(tagged_word)
 
 ```julia
 
 julia> for tagged_word in train[16]
-           pos_tag = CorpusLoaders.part_of_speech(tagged_word)
+           pos_tag = part_of_speech(tagged_word)
            w = word(tagged_word)
            println("$w => $pos_tag")
        end

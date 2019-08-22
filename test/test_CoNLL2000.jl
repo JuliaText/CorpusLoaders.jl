@@ -22,6 +22,6 @@ end
 
     plain_words = word.(words)
     @test typeof(plain_words) <: Vector{String}
-    pos_tags = CorpusLoaders.part_of_speech.(words)
+    pos_tags = part_of_speech.(words)
     @test typeof(pos_tags) <: Vector{String}
 end
