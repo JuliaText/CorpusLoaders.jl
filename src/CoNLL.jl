@@ -46,7 +46,7 @@ function parse_conll2003_tagged_word(line::AbstractString)
                          tokens_tags[2], tokens_tags[1])
 end
 
-function parse_conllfile(filename)
+function parse_conll2003file(filename)
     local sent
     local doc
     docs = @NestedVector(NERTaggedWord,3)()
@@ -83,8 +83,10 @@ function parse_conllfile(filename)
 end
 
 function load(corpus::CoNLL, file="train")
-    file == "train" && return parse_conllfile(corpus.trainpath)
-    file == "test" && return parse_conllfile(corpus.testpath)
-    file == "dev" && return parse_conllfile(corpus.devpath)
-    throw("Invalid filename! Available datasets are `train`, `test` and `dev`")
+    if (corpus.year == 2003)
+        file == "train" && return parse_conll2003file(corpus.trainpath)
+        file == "test" && return parse_conll2003file(corpus.testpath)
+        file == "dev" && return parse_conll2003file(corpus.devpath)
+        throw("Invalid filename! Available datasets are `train`, `test` and `dev`")
+    end
 end
