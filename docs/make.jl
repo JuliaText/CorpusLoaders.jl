@@ -3,6 +3,9 @@ using CorpusLoaders
 
 makedocs(modules = [CorpusLoaders],
          sitename = "CorpusLoaders",
+         format = Documenter.HTML(
+            assets = ["assets/favicon.ico"],
+         ),
          pages = [
              "Home" => "index.md",
              "CoNLL" => "CoNLL.md",
