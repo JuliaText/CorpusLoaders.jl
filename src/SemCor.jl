@@ -1,6 +1,7 @@
 struct SemCor{S}
     filepaths::Vector{S}
 end
+
 """
     SemCor()
 
