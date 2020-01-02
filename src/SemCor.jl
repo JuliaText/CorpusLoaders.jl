@@ -38,7 +38,7 @@ julia> index["abandon%2:38:00::"]
 
 SemCor is a classical Sense Annotated Corpus.
 
-It Has a structure of documents, paragraphs, sentences, words.
+It has a structure of documents, paragraphs, sentences, words.
 
 The words are either tagged with part of speech, or tagged with full lemma, part of speech and sensekey.
 
