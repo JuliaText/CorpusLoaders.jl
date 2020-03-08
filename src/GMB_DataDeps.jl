@@ -1,11 +1,11 @@
 using DataDeps
 
 
-for (ver, checksum) in [("1.0.0", "16814254fe194d55a2fcc24858aa76d71de3c49e495bd98478cc7345e766d8b7"),
-            ("1.1.0", "0495577ac3a87c2a64fe6189798ea046de0f44943dfb7b60fe38cf648d34c421"),
-            ("2.0.0", "70b9eb7ca0dc9d67655f9d671d40be10aeff490f0bea4f10cb1946127b74c102"),
-            ("2.1.0", "93fbae725f0125dedb7369403fda1dace85b2dcd8a523ed80af23e863b18ef2c"),
-            ("2.2.0", "0714f07dbcb84a215d668f3ee85892fa8fa4a8154439662eb7529413367b8f56")]
+for (ver, checksum) in [("1.0.0", "e151d953a0316c5712a52d56a5702f24cc1dc8f22425955821113437ec43a3b8"),
+            ("1.1.0", "3830e7071e43ca9e659d51f2f7c5e5afea9e233993251e9f45d628caa6a372c6"),
+            ("2.0.0", "30a700e2509eb1a484357a1f1e5f7f06ef8e9516267413061b7dfccdf8ba4215"),
+            ("2.1.0", "e4bd7d43f7b2c1618f896784c2b7df3acde3bfe93ef4fd6e5a7a196f54b6a4f9"),
+            ("2.2.0", "dd12f2617f745ea3cafa348c60ee374c804be238d184bcf91db7bd9f90261625")]
 
     register(DataDep("GMB $ver",
         """
