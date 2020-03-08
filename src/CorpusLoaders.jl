@@ -11,7 +11,7 @@ export Document, TaggedWord, SenseAnnotatedWord, PosTaggedWord
 export title, sensekey, word, named_entity, part_of_speech
 export load
 
-export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold, CoNLL2000
+export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold, CoNLL2000, GMB
 
 function __init__()
     include(joinpath(@__DIR__, "WikiCorpus_DataDeps.jl"))
@@ -24,6 +24,7 @@ function __init__()
     include(joinpath(@__DIR__, "StanfordSentimentTreebank_DataDeps.jl"))
     include(joinpath(@__DIR__, "WikiGold_DataDeps.jl"))
     include(joinpath(@__DIR__, "CoNLL2000_DataDeps.jl"))
+    include(joinpath(@__DIR__, "GMB_DataDeps.jl"))
 end
 
 include("types.jl")
@@ -38,5 +39,5 @@ include("Twitter.jl")
 include("StanfordSentimentTreebank.jl")
 include("WikiGold.jl")
 include("CoNLL2000.jl")
-
+include("GMB.jl")
 end
