@@ -41,7 +41,7 @@ function parse_gmb(filename)
     context = Document(intern(basename(filename)), sents)
 
     function new_sentence()
-        sent = @NestedVector(NerOnlyTaggedWord,1)()
+        sent = @NestedVector(NerOnlyTaggedWord, 1)()
         push!(sents, sent)
     end
     
