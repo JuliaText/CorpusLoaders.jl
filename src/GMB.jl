@@ -30,7 +30,7 @@ MultiResolutionIterators.levelname_map(::Type{GMB}) = [
     ]
 
 function parse_gmb_tagged_word(line::AbstractString)
-    tokens_tags = split(line,"	")
+    tokens_tags = split(line, '\t')
     return NerOnlyTaggedWord(tokens_tags[2], tokens_tags[1])
 end
 
