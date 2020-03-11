@@ -8,7 +8,7 @@ function GMB(dirpath)
             data_path = joinpath.(dirpath,"data")
                 for dir in readdir(data_path)
                     for d in readdir(joinpath.(data_path,dir))
-                         if ("en.tags" in readdir(joinpath.(data_path,dir,d))) == true
+                         if ispath(joinpath(data_path, dir, d, "en.tags")))
                           push!(paths,joinpath.(data_path,dir,d,"en.tags"))
                          end
                        
