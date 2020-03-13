@@ -4,19 +4,8 @@ end
 
 function GMB(dirpath)
     @assert(isdir(dirpath), dirpath)
-        paths=String[]
-            data_path = joinpath.(dirpath,"data")
-                for dir in readdir(data_path)
-                    for d in readdir(joinpath.(data_path,dir))
-                         if ispath(joinpath(data_path, dir, d, "en.tags")))
-                          push!(paths,joinpath.(data_path,dir,d,"en.tags"))
-                         end
-                       
-                    end
-                end
-  
-GMB(paths)
-
+    paths=glob("data/*/*/en.tags",dirpath)
+    GMB(paths)
 end
 
 GMB() = GMB(datadep"GMB 2.2.0") 
@@ -35,10 +24,8 @@ function parse_gmb_tagged_word(line::AbstractString)
 end
 
 function parse_gmb(filename)
-  local sent=[]
-
-    sents = @NestedVector(NerOnlyTaggedWord, 2)()
-    context = Document(intern(basename(filename)), sents)
+    local sent=[]
+	sents = @NestedVector(NerOnlyTaggedWord, 2)()
 
     function new_sentence()
         sent = @NestedVector(NerOnlyTaggedWord, 1)()
@@ -50,22 +37,21 @@ function parse_gmb(filename)
     get_tagged(line) = push!(sent, parse_gmb_tagged_word(line))
 
     # parse
-  
-for line in eachline(filename)
+	for line in eachline(filename)
         if length(line) == 0
             new_sentence()
         else
             get_tagged(line)
         end
-    end
-    return context
+	end
+    return sents
 end
 
 function load(corpus::GMB)
-    ch=[]
-        for fn in corpus.filepath
-            document = parse_gmb(fn)
-           append!(ch, document)
-        end
- return(ch)
+	ch=[]
+	for fn in corpus.filepath
+    	document = parse_gmb(fn)
+        append!(ch, document)
+	end
+    return(ch)
 end
