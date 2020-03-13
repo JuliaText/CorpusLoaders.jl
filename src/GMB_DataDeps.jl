@@ -21,7 +21,7 @@ for (ver, checksum) in [("1.0.0", "e151d953a0316c5712a52d56a5702f24cc1dc8f224259
         """,
         "https://gmb.let.rug.nl/releases/gmb-$(ver).zip",
         checksum;
-        post_fetch_method = fn -> begin
+        post_fetch_method = function (fn)
             unpack(fn)
             innerdir = "gbm-$(ver)"
             innerfiles = readdir(innerdir)
