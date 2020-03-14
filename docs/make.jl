@@ -17,7 +17,8 @@ makedocs(modules = [CorpusLoaders],
              "Twitter" => "Twitter.md",
              "WikiCorpus" => "WikiCorpus.md",
              "WikiGold" => "WikiGold.md",
-             "API References" => "APIReference.md"
+             "API References" => "APIReference.md",
+             "GMB" => "GMB.md"
         ])
 
 
