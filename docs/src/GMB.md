@@ -10,6 +10,10 @@ The Groningen Meaning Bank (GMB) consists of public domain English texts with co
 The GMB is developed at the [University of Groningen](https://www.rug.nl/).
  A multi-lingual version of the GMB is the [Parallel Meaning Bank](https://pmb.let.rug.nl/). A thorough description of the GMB can be found in the Handbook of Linguistic Annotation.
 
+the part-of-speech tagset used in the Penn Treebank tagset as listed in Ann Taylor, Mitchell Marcus and Beatrice Santorini (2003): [The Penn Treebank](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.9.8216): An Overview, Section 1.1.
+
+
+
 For more detail [refer](https://gmb.let.rug.nl/about.php)
 
 ```julia
