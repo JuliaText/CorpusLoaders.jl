@@ -40,3 +40,4 @@ Follow the links below for full docs on the usage of the corpora.
  - [IMDB movie reviews](docs/src/IMDB.md)
  - [Twitter sentiment dataset](docs/src/Twitter.md)
  - [Stanford Sentiment Treebank](docs/src/SST.md)
+ - [GMB](docs/src/GMB.md)
