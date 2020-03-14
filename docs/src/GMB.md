@@ -6,53 +6,60 @@ GMB is a fairly large corpus with a lot of annotations.
 Unfortunately, GMB is not perfect. It is not a gold standard corpus, meaning that it’s not completely human annotated and it’s not considered 100% correct. 
 The corpus is created by using already existed annotators and then corrected by humans where needed.
 
+The Groningen Meaning Bank (GMB) consists of public domain English texts with corresponding syntactic and semantic representations.
+The GMB is developed at the [University of Groningen](https://www.rug.nl/).
+ A multi-lingual version of the GMB is the [Parallel Meaning Bank](https://pmb.let.rug.nl/). A thorough description of the GMB can be found in the Handbook of Linguistic Annotation.
+
+For more detail [refer](https://gmb.let.rug.nl/about.php)
 
 ```julia
 
-julia> corp = load(GMB())
-37789-element Array{Any,1}:
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("NNS", "Families"), NerOnlyTaggedWord("IN", "of"), 
-NerOnlyTaggedWord("NNS", "soldiers"), NerOnlyTaggedWord("VBN", "killed"), NerOnlyTaggedWord("IN", "in"), 
-NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NN", "conflict"), NerOnlyTaggedWord("VBD", "joined"), 
-NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NNS", "protesters")  …  NerOnlyTaggedWord("CD", "One"), 
-NerOnlyTaggedWord("NN", "Terrorist"), NerOnlyTaggedWord("RQU", "\""), NerOnlyTaggedWord("CC", "and"), 
-NerOnlyTaggedWord("LQU", "\""), NerOnlyTaggedWord("VB", "Stop"), NerOnlyTaggedWord("DT", "the"), 
-NerOnlyTaggedWord("NNS", "Bombings"), NerOnlyTaggedWord(".", "."), NerOnlyTaggedWord("LQU", "\"")]
+ Data= load(GMB())
+37789-element Array{Array{PosTaggedWord,1},1}:
+ [PosTaggedWord("NNS", "Families"), PosTaggedWord("IN", "of"), PosTaggedWord("NNS", "soldiers"), PosTaggedWord("VBN", "killed"), PosTaggedWord("IN", "in"), PosTaggedWord("DT", "the"), PosTaggedWord("NN", "conflict"), PosTaggedWord("VBD", "joined"), PosTaggedWord("DT", "the"), PosTaggedWord("NNS", "protesters")  …  PosTaggedWord("CD", "One"), PosTaggedWord("NN", "Terrorist"), PosTaggedWord("RQU", "\""), PosTaggedWord("CC", "and"), PosTaggedWord("LQU", "\""), PosTaggedWord("VB", "Stop"), PosTaggedWord("DT", "the"), PosTaggedWord("NNS", "Bombings"), PosTaggedWord(".", "."), PosTaggedWord("LQU", "\"")]
 
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("PRP", "They"), NerOnlyTaggedWord("VBD", "marched"), 
-NerOnlyTaggedWord("IN", "from"), NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NNS", "Houses"), 
-NerOnlyTaggedWord("IN", "of"), NerOnlyTaggedWord("NN", "Parliament"), NerOnlyTaggedWord("TO", "to"), 
-NerOnlyTaggedWord("DT", "a"), NerOnlyTaggedWord("NN", "rally"), NerOnlyTaggedWord("IN", "in"), 
-NerOnlyTaggedWord("NNP", "Hyde"), NerOnlyTaggedWord("NNP", "Park"), NerOnlyTaggedWord(".", ".")]
+ [PosTaggedWord("PRP", "They"), PosTaggedWord("VBD", "marched"), PosTaggedWord("IN", "from"), PosTaggedWord("DT", "the"), PosTaggedWord("NNS", "Houses"), PosTaggedWord("IN", "of"), PosTaggedWord("NN", "Parliament"), PosTaggedWord("TO", "to"), PosTaggedWord("DT", "a"), PosTaggedWord("NN", "rally"), PosTaggedWord("IN", "in"), PosTaggedWord("NNP", "Hyde"), PosTaggedWord("NNP", "Park"), PosTaggedWord(".", ".")]
 
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("NNS", "Police"), NerOnlyTaggedWord("VBD", "put"), 
-NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NN", "number"), NerOnlyTaggedWord("IN", "of"), 
-NerOnlyTaggedWord("NNS", "marchers"), NerOnlyTaggedWord("IN", "at"), NerOnlyTaggedWord("CD", "10,000"), 
-NerOnlyTaggedWord("IN", "while"), NerOnlyTaggedWord("NNS", "organizers"), NerOnlyTaggedWord("VBD", "claimed"), 
-NerOnlyTaggedWord("PRP", "it"), NerOnlyTaggedWord("VBD", "was"), NerOnlyTaggedWord("CD", "100,000"), 
-NerOnlyTaggedWord(".", ".")]
+ [PosTaggedWord("NNS", "Police"), PosTaggedWord("VBD", "put"), PosTaggedWord("DT", "the"), PosTaggedWord("NN", "number"), PosTaggedWord("IN", "of"), PosTaggedWord("NNS", "marchers"), PosTaggedWord("IN", "at"), PosTaggedWord("CD", "10,000"), PosTaggedWord("IN", "while"), PosTaggedWord("NNS", "organizers"), PosTaggedWord("VBD", "claimed"), PosTaggedWord("PRP", "it"), PosTaggedWord("VBD", "was"), PosTaggedWord("CD", "100,000"), PosTaggedWord(".", ".")]
 
   ⋮
+                                                                            
+ [PosTaggedWord("IN", "At"), PosTaggedWord("JJ", "last"), PosTaggedWord("DT", "the"), PosTaggedWord("NNP", "Goatherd"), PosTaggedWord("VBD", "threw"), PosTaggedWord("DT", "a"), PosTaggedWord("NN", "stone"), PosTaggedWord(",", ","), PosTaggedWord("CC", "and"), PosTaggedWord("VBG", "breaking")  …  PosTaggedWord(",", ","), PosTaggedWord("VBD", "begged"), PosTaggedWord("DT", "the"), PosTaggedWord("NNP", "Goat"), PosTaggedWord("RB", "not"), PosTaggedWord("TO", "to"), PosTaggedWord("VB", "tell"), PosTaggedWord("PRP\$", "his"), PosTaggedWord("NN", "master"), PosTaggedWord(".", ".")]
 
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("IN", "At"), NerOnlyTaggedWord("JJ", "last"), 
-NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NNP", "Goatherd"), NerOnlyTaggedWord("VBD", "threw"), 
-NerOnlyTaggedWord("DT", "a"), NerOnlyTaggedWord("NN", "stone"), NerOnlyTaggedWord(",", ","), NerOnlyTaggedWord("CC", 
-"and"), NerOnlyTaggedWord("VBG", "breaking")  …  NerOnlyTaggedWord(",", ","), NerOnlyTaggedWord("VBD", "begged"), 
-NerOnlyTaggedWord("DT", "the"), NerOnlyTaggedWord("NNP", "Goat"), NerOnlyTaggedWord("RB", "not"), 
-NerOnlyTaggedWord("TO", "to"), NerOnlyTaggedWord("VB", "tell"), NerOnlyTaggedWord("PRP\$", "his"), 
-NerOnlyTaggedWord("NN", "master"), NerOnlyTaggedWord(".", ".")]
+ [PosTaggedWord("DT", "The"), PosTaggedWord("NNP", "Goat"), PosTaggedWord("VBD", "replied"), PosTaggedWord(",", ","), PosTaggedWord("LQU", "\""), PosTaggedWord("WRB", "Why"), PosTaggedWord(",", ","), PosTaggedWord("PRP", "you"), PosTaggedWord("JJ", "silly"), PosTaggedWord("NN", "fellow")  …  PosTaggedWord("DT", "the"), PosTaggedWord("NN", "horn"), PosTaggedWord("MD", "will"), PosTaggedWord("VB", "speak"), PosTaggedWord("IN", "though"), PosTaggedWord("PRP", "I"), PosTaggedWord("VB", "be"), PosTaggedWord("JJ", "silent"), PosTaggedWord(".", "."), PosTaggedWord("LQU", "\"")]
 
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("DT", "The"), NerOnlyTaggedWord("NNP", "Goat"),
- NerOnlyTaggedWord("VBD", "replied"), NerOnlyTaggedWord(",", ","), NerOnlyTaggedWord("LQU", "\""),
- NerOnlyTaggedWord("WRB", "Why"), NerOnlyTaggedWord(",", ","), NerOnlyTaggedWord("PRP", "you"), 
-NerOnlyTaggedWord("JJ", "silly"), NerOnlyTaggedWord("NN", "fellow")  …  NerOnlyTaggedWord("DT", "the"), 
-NerOnlyTaggedWord("NN", "horn"), NerOnlyTaggedWord("MD", "will"), NerOnlyTaggedWord("VB", "speak"), 
-NerOnlyTaggedWord("IN", "though"), NerOnlyTaggedWord("PRP", "I"), NerOnlyTaggedWord("VB", "be"), 
-NerOnlyTaggedWord("JJ", "silent"), NerOnlyTaggedWord(".", "."), NerOnlyTaggedWord("LQU", "\"")]
+ [PosTaggedWord("VBP", "Do"), PosTaggedWord("RB", "not"), PosTaggedWord("VB", "attempt"), PosTaggedWord("TO", "to"), PosTaggedWord("VB", "hide"), PosTaggedWord("NNS", "things"), PosTaggedWord("WDT", "which"), PosTaggedWord("MD", "can"), PosTaggedWord("RB", "not"), PosTaggedWord("VB", "be"), PosTaggedWord("JJ", "hid"), PosTaggedWord(".", ".")] 
 
- CorpusLoaders.NerOnlyTaggedWord[NerOnlyTaggedWord("VBP", "Do"), NerOnlyTaggedWord("RB", "not"), 
-NerOnlyTaggedWord("VB", "attempt"), NerOnlyTaggedWord("TO", "to"), NerOnlyTaggedWord("VB", "hide"), 
-NerOnlyTaggedWord("NNS", "things"), NerOnlyTaggedWord("WDT", "which"), NerOnlyTaggedWord("MD", "can"), 
-NerOnlyTaggedWord("RB", "not"), NerOnlyTaggedWord("VB", "be"), NerOnlyTaggedWord("JJ", "hid"), NerOnlyTaggedWord(".", ".")]
+julia> Data[1]
+30-element Array{PosTaggedWord,1}:
+ PosTaggedWord("NNS", "Families")
+ PosTaggedWord("IN", "of")
+ PosTaggedWord("NNS", "soldiers")
+ PosTaggedWord("VBN", "killed")
+ PosTaggedWord("IN", "in")
+ PosTaggedWord("DT", "the")
+ PosTaggedWord("NN", "conflict")
+ PosTaggedWord("VBD", "joined")
+ PosTaggedWord("DT", "the")
+ PosTaggedWord("NNS", "protesters")
+ PosTaggedWord("WP", "who")
+ PosTaggedWord("VBD", "carried")
+ PosTaggedWord("NNS", "banners") 
+ PosTaggedWord("IN", "with") 
+ ⋮
+ PosTaggedWord("IN", "as")
+ PosTaggedWord("LQU", "\"")
+ PosTaggedWord("NNP", "Bush")
+ PosTaggedWord("NN", "Number")
+ PosTaggedWord("CD", "One") 
+ PosTaggedWord("NN", "Terrorist")
+ PosTaggedWord("RQU", "\"") 
+ PosTaggedWord("CC", "and") 
+ PosTaggedWord("LQU", "\"") 
+ PosTaggedWord("VB", "Stop")
+ PosTaggedWord("DT", "the") 
+ PosTaggedWord("NNS", "Bombings")
+ PosTaggedWord(".", ".") 
+ PosTaggedWord("LQU", "\"") 
 
 ```
