@@ -39,4 +39,4 @@ Follow the links below for full docs on the usage of the corpora.
  - [CoNLL](docs/src/CoNLL.md)
  - [IMDB movie reviews](docs/src/IMDB.md)
  - [Twitter sentiment dataset](docs/src/Twitter.md)
- - [Stanford Sentiment Treebank](docs/src/SST.md)
+ - [Stanford Sentiment Treebank](docs/src/StanfordSentimentTreebank.md)
