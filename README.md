@@ -21,7 +21,6 @@ Also, in the Pkg REPL, the package can be added with the add command, as:
 ```julia
 pkg> add CorpusLoaders
 ```
-**Note**: Only linux and OS X are supported.
 
 ## Common Structure
 For some corpus which we will say has type `Corpus`,
