@@ -11,7 +11,16 @@
 
 A collection of various means for loading various different corpora used in NLP.
 
+## Installation
+As per the standard [Julia package installation](https://julialang.github.io/Pkg.jl/dev/managing-packages/#Adding-registered-packages-1):
 
+```julia
+julia> Pkg.add("CorpusLoaders")
+```
+Also, in the Pkg REPL, the package can be added with the add command, as: 
+```julia
+pkg> add CorpusLoaders
+```
 
 ## Common Structure
 For some corpus which we will say has type `Corpus`,
