@@ -30,8 +30,8 @@ function Twitter(category="train_pos")
     file = file_map[file_id]
     polarity = polarity_map[polarity_id]
     path = joinpath(datadep"Twitter Sentiment Dataset", "$file")
-    dataframe = CSV.read(path, header=0)
-    return Twitter(dataframe.Column6[dataframe.Column1 .== polarity])
+    table = CSV.File(path, header=0)
+    return Twitter(table.Column6[table.Column1 .== polarity])
 end
 
 MultiResolutionIterators.levelname_map(::Type{Twitter}) = [
