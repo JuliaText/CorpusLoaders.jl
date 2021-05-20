@@ -1,9 +1,0 @@
-julia 0.6
-LightXML
-DataDeps 0.2.4
-Glob
-InternedStrings
-StringEncodings
-WordTokenizers
-MultiResolutionIterators
-CSV 0.4.3
