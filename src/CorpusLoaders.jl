@@ -13,18 +13,6 @@ export load
 
 export WikiCorpus, SemCor, Senseval3, CoNLL, IMDB, Twitter, StanfordSentimentTreebank, WikiGold, CoNLL2000
 
-function __init__()
-    include(joinpath(@__DIR__, "WikiCorpus_DataDeps.jl"))
-    include(joinpath(@__DIR__, "SemCor_DataDeps.jl"))
-    include(joinpath(@__DIR__, "SemEval2007Task7_DataDeps.jl"))
-    include(joinpath(@__DIR__, "Senseval3_DataDeps.jl"))
-    include(joinpath(@__DIR__, "CoNLL_DataDeps.jl"))
-    include(joinpath(@__DIR__, "IMDB_DataDeps.jl"))
-    include(joinpath(@__DIR__, "Twitter_DataDeps.jl"))
-    include(joinpath(@__DIR__, "StanfordSentimentTreebank_DataDeps.jl"))
-    include(joinpath(@__DIR__, "WikiGold_DataDeps.jl"))
-    include(joinpath(@__DIR__, "CoNLL2000_DataDeps.jl"))
-end
 
 include("types.jl")
 include("apply_subparsers.jl")
@@ -38,5 +26,18 @@ include("Twitter.jl")
 include("StanfordSentimentTreebank.jl")
 include("WikiGold.jl")
 include("CoNLL2000.jl")
+
+function __init__()
+    init_datadeps(WikiCorpus)
+    init_datadeps(SemCor)
+    init_datadeps(Senseval3)
+    init_datadeps(CoNLL)
+    init_datadeps(IMDB)
+    init_datadeps(Twitter)
+    init_datadeps(StanfordSentimentTreebank)
+    init_datadeps(WikiGold)
+    init_datadeps(CoNLL2000)
+    init_datadeps_SemEval2007Task7()
+end
 
 end
