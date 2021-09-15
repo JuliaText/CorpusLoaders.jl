@@ -2,7 +2,7 @@ name = "CorpusLoaders"
 uuid = "214a0ac2-f95b-54f7-a80b-442ed9c2c9e8"
 license = "MIT"
 desc = "A variety of loaders for various NLP corpora."
-version = "0.3.2"
+version = "0.3.3"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
@@ -15,7 +15,7 @@ StringEncodings = "69024149-9ee7-55f6-a4c4-859efe599b68"
 WordTokenizers = "796a5d58-b03d-544a-977e-18100b691f6e"
 
 [compat]
-CSV = "0.5,0.6,0.7,0.8"
+CSV = "0.5,0.6,0.7,0.8,0.9"
 DataDeps = "0.7"
 Glob = "1.2"
 InternedStrings = "0.7"
