@@ -2,7 +2,7 @@ name = "CorpusLoaders"
 uuid = "214a0ac2-f95b-54f7-a80b-442ed9c2c9e8"
 license = "MIT"
 desc = "A variety of loaders for various NLP corpora."
-version = "0.3.3"
+version = "0.3.4"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
