@@ -15,7 +15,7 @@ StringEncodings = "69024149-9ee7-55f6-a4c4-859efe599b68"
 WordTokenizers = "796a5d58-b03d-544a-977e-18100b691f6e"
 
 [compat]
-CSV = "0.5,0.6,0.7,0.8,0.9"
+CSV = "0.5,0.6,0.7,0.8,0.9,0.10"
 DataDeps = "0.7"
 Glob = "1.2"
 InternedStrings = "0.7"
